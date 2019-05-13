@@ -1,8 +1,9 @@
 package com.dwg;
 
-import com.shapes.Line;
 import com.shapes.McShape;
+import com.shapes.Line;
 import com.shapes.Plot;
+import com.shapes.Rectangle;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -57,6 +58,11 @@ public class McCanvas extends JComponent
                         drawEnd = new java.awt.Point(e.getX(),e.getY());
                         McShape myMcLine = new Line(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, getCanvasSize());
                         listOfMcShapes.add(myMcLine);
+                    }
+                    if (currentPaintingAction == 3){
+                        drawEnd = new java.awt.Point(e.getX(),e.getY());
+                        McShape myMcRectangle = new Rectangle(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
+                        listOfMcShapes.add(myMcRectangle);
                     }
 
                     repaint();

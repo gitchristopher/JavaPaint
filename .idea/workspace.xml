@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89a72989-ada3-4329-be84-a30c84b6e52f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/shapes/Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/shapes/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CAB302Assignment2/com/dwg/McCanvas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CAB302Assignment2/com/dwg/McCanvas$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CAB302Assignment2/com/dwg/McCanvas$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CAB302Assignment2/com/dwg/McCanvas$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CAB302Assignment2/com/dwg/McCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CAB302Assignment2/com/dwg/McCanvas.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/dwg/McCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/dwg/McCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gui/McDrawApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gui/McDrawApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/shapes/Plot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/shapes/Plot.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +21,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gui/McDrawApp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="267">
@@ -35,14 +37,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1189">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="-1242">
+              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+              <folding>
+                <element signature="e#700#709#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/shapes/Rectangle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1161">
+              <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#752#761#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/shapes/Line.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1107">
-              <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#752#753#0" expanded="true" />
@@ -119,8 +132,9 @@
         <option value="$PROJECT_DIR$/src/com/shapes/McShape.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/Line.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/Plot.java" />
-        <option value="$PROJECT_DIR$/src/com/dwg/McCanvas.java" />
         <option value="$PROJECT_DIR$/src/com/gui/McDrawApp.java" />
+        <option value="$PROJECT_DIR$/src/com/shapes/Rectangle.java" />
+        <option value="$PROJECT_DIR$/src/com/dwg/McCanvas.java" />
       </list>
     </option>
   </component>
@@ -274,9 +288,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16577825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16577825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -285,7 +298,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32719395" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32719395" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -332,7 +345,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/shapes/Line.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1107">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#752#753#0" expanded="true" />
@@ -347,17 +360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1189">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#752#761#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gui/McDrawApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
@@ -368,6 +370,26 @@
             <element signature="e#480#481#0" expanded="true" />
             <element signature="e#6315#6316#0" expanded="true" />
             <element signature="e#6383#6384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/shapes/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1161">
+          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1242">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding>
+            <element signature="e#700#709#0" expanded="true" />
           </folding>
         </state>
       </provider>
