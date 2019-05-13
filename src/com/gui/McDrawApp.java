@@ -1,15 +1,15 @@
 package com.gui;
 import com.dwg.McCanvas;
+import com.shapes.McShape;
 
 
-
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.JFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class McDrawApp extends JFrame
 {
@@ -158,7 +158,7 @@ public class McDrawApp extends JFrame
             case 5:
                 myButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Printing...");
+                        saveFile();
                     }
                 });
             default:
@@ -171,5 +171,20 @@ public class McDrawApp extends JFrame
 
     public int getCurrentPaintAction(){
         return currentPaintingAction;
+    }
+
+    public void saveFile(){
+        //Component c = this.easelPanel.getComponent(0);
+//
+        //Canvas can = (Canvas)c;
+        //System.out.println(can);
+        //ArrayList<McShape> tempListOfMcShapes = can.getMcShapesList();
+
+
+        //for (McShape s:tempListOfMcShapes)
+        //{
+        //    System.out.println(s);
+        //}
+
     }
 }

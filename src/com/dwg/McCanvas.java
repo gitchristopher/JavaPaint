@@ -32,7 +32,8 @@ public class McCanvas extends JComponent
     Graphics2D graphicSettings;
 
 
-    public McCanvas() {
+    public McCanvas()
+    {
         this.addMouseListener(new MouseAdapter(){
             @Override
             public void mousePressed(MouseEvent e) {
@@ -46,6 +47,7 @@ public class McCanvas extends JComponent
         });
         this.addMouseListener(new MouseAdapter() {
             Shape myNewShape = null;
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 currentlyDrawing = false;
@@ -64,6 +66,7 @@ public class McCanvas extends JComponent
                     McShape myMcRectangle = new Rectangle(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
                     listOfMcShapes.add(myMcRectangle);
                 }
+                //repaint refreshes a number of things, paint being one of them, that is why the method is below
                 repaint();
                 drawStart = null;
                 drawEnd = null;
@@ -78,22 +81,34 @@ public class McCanvas extends JComponent
                 }
             }
         });
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                Component c = (Component)e.getSource();
+                int minSize = Math.min(c.getWidth(), c.getHeight());
+                c.setSize(minSize,minSize);
+            }
+        });
     }
 
 
-    @Override
+    //METHODS
     public void paint(Graphics g) {
         graphicSettings = (Graphics2D)g;
         graphicSettings.setColor(edgeColour);
-        g.setColor(Color.lightGray);
-        g.fillRect(5, 5, 570, 500);
+        graphicSettings.setColor(Color.white);
+        int size = Math.min(getWidth(), getHeight());
+        graphicSettings.fillRect(0, 0, size, size );
+
         for (McShape s : listOfMcShapes){
             s.draw(graphicSettings, this.getHeight());
         }
+
         //This draws the temporary shape so you can see where it will be
         if (drawStart != null && drawEnd != null){
-            graphicSettings.setPaint(Color.pink);
+            graphicSettings.setPaint(Color.lightGray);
             Shape myTempShape = null;
+
             if (currentPaintingAction == 1){
                 myTempShape = drawPoint(drawStart.getX(), drawStart.getY());
             }
@@ -103,6 +118,7 @@ public class McCanvas extends JComponent
             if (currentPaintingAction == 3){
                 myTempShape = drawRectangle(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
             }
+
             graphicSettings.draw(myTempShape);
         }
     }
@@ -114,6 +130,9 @@ public class McCanvas extends JComponent
         return this.getHeight();
     }
 
+    public ArrayList<McShape> getMcShapesList(){
+        return this.listOfMcShapes;
+    }
 
     //-----------------USED FOR THE shadow SHAPE WHEN DRAWING
 
@@ -138,65 +157,3 @@ public class McCanvas extends JComponent
         return new Rectangle2D.Double(x, y, width, height);
     }
 }
-
-
-    //Class for "Point"
-    //class Point {
-//
-    //    private int x;
-    //    private int y;
-//
-    //    public Point() {
-    //    }
-//
-    //    public Point(int x, int y) {
-    //        this.x = x;
-    //        this.y = y;
-    //    }
-//
-    //    public int getX() {
-    //        return x;
-    //    }
-//
-    //    public int getY() {
-    //        return y;
-    //    }
-//
-    //    public void setX(int x) {
-    //        this.x = x;
-    //    }
-//
-    //    public void setY(int y) {
-    //        this.y = y;
-    //    }
-    //}
-    //Class for Line
-    //class Line {
-//
-    //    private Point p1;
-    //    private Point p2;
-//
-    //    public Line() {
-    //    }
-//
-    //    public Line(Point p1, Point p2) {
-    //        this.p1 = p1;
-    //        this.p2 = p2;
-    //    }
-//
-    //    public Point getP1() {
-    //        return p1;
-    //    }
-//
-    //    public Point getP2() {
-    //        return p2;
-    //    }
-//
-    //    public void setP1(Point p1) {
-    //        this.p1 = p1;
-    //    }
-//
-    //    public void setP2(Point p2) {
-    //        this.p2 = p2;
-    //    }
-    //}
