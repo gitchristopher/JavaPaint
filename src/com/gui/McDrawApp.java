@@ -1,37 +1,35 @@
 package com.gui;
+import com.dwg.McCanvas;
 
-import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.event.MouseInputListener;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main extends JFrame {
+public class McDrawApp extends JFrame
+{
     public static boolean lineButton = true;
     public static boolean recButton = false;
     public static boolean markerButton = false;
 
-    public static void main(String[] args) {
+    public static void main(String [] args)
+    {
+        new McDrawApp();
+    }
 
-        //Creating the Frame
-        JFrame mainFrame = new JFrame("Vector Design Tool");
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(800, 600);
+    public McDrawApp(){
 
+        //Set the default values for the applications GUI
+        this.setTitle("McDrawApp - Vector Design Tool");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800, 600);
 
+        //Top Menu Bar
         //Creating the MenuBar and adding components
         JMenuBar menuBar = new JMenuBar();
         JMenu fileButton = new JMenu("FILE");
@@ -45,16 +43,19 @@ public class Main extends JFrame {
         fileButton.add(openOption);
         fileButton.add(saveOption);
 
-        //new drawing panel
-        JPanel drawPanel = new JPanel();
-        //drawPanel.addMouseListener();
-        drawPanel.setLocation(5, 5);
-        drawPanel.setSize(570, 500);
-        drawPanel.setBackground(Color.lightGray);
-        drawPanel.setLayout(new BorderLayout());
-        drawPanel.add(new drawing());
 
+        //This is the panel which will hold the canvas to be painted on
+        JPanel easelPanel = new JPanel();
+        //bottomMenuPanel.addMouseListener();
+        easelPanel.setLocation(5, 5);
+        easelPanel.setSize(570, 500);
+        easelPanel.setBackground(Color.lightGray);
+        easelPanel.setLayout(new BorderLayout());
+        McCanvas theCanvas = new McCanvas();
+        theCanvas.setLayout(null);
+        easelPanel.add(theCanvas);
 
+        //Bottom Menu Bar
         //Creating the panel at bottom and adding components
         JPanel bottomPanel = new JPanel(); // the panel is not visible in output
         JButton drawLine = new JButton("Draw Lines");
@@ -79,10 +80,10 @@ public class Main extends JFrame {
 
 
         //Adding Components to the frame.
-        mainFrame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-        mainFrame.getContentPane().add(BorderLayout.NORTH, menuBar);
-        mainFrame.getContentPane().add(BorderLayout.CENTER, drawPanel);
-        mainFrame.setVisible(true);
+        this.add(BorderLayout.SOUTH, bottomPanel);
+        this.add(BorderLayout.NORTH, menuBar);
+        this.add(BorderLayout.CENTER, easelPanel);
+        this.setVisible(true);
 
         drawLine.addActionListener(new ActionListener() {
             @Override
@@ -91,7 +92,7 @@ public class Main extends JFrame {
                 lineButton = true;
                 recButton = false;
                 markerButton = false;
-                drawPanel.repaint();
+                easelPanel.repaint();
             }
         });
 
@@ -102,7 +103,7 @@ public class Main extends JFrame {
                 lineButton = false;
                 recButton = true;
                 markerButton = false;
-                drawPanel.repaint();
+                easelPanel.repaint();
             }
         });
 
@@ -113,7 +114,7 @@ public class Main extends JFrame {
                 lineButton = false;
                 recButton = false;
                 markerButton = true;
-                drawPanel.repaint();
+                easelPanel.repaint();
             }
         });
 
@@ -125,7 +126,5 @@ public class Main extends JFrame {
                 tf.setText("");
             }
         });
-
-
     }
 }

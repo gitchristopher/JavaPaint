@@ -1,18 +1,18 @@
-package com.gui;
+package com.dwg;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 
-import static com.gui.Main.lineButton;
-import static com.gui.Main.recButton;
-import static com.gui.Main.markerButton;
+import static com.gui.McDrawApp.lineButton;
+import static com.gui.McDrawApp.recButton;
+import static com.gui.McDrawApp.markerButton;
 
-public class drawing extends JPanel implements MouseInputListener {
+public class McCanvas extends JComponent implements MouseInputListener {
 
         private Point p1 = new Point();
         private Point p2 = new Point();
@@ -26,7 +26,7 @@ public class drawing extends JPanel implements MouseInputListener {
 
 
 
-        public drawing() {
+        public McCanvas() {
             addMouseListener(this);
 
         }
