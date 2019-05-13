@@ -112,7 +112,7 @@ public class McDrawApp extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     currentPaintingAction = paintingActionNumber;
                     //TODO: Not sure if this action listener should repaint or if it should be done elsewhere
-                    easelPanel.repaint();
+                    //easelPanel.repaint();
                 }
             });
         }

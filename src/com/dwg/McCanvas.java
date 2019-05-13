@@ -1,5 +1,6 @@
 package com.dwg;
 
+import com.shapes.Line;
 import com.shapes.McShape;
 import com.shapes.Plot;
 
@@ -51,6 +52,11 @@ public class McCanvas extends JComponent
                     if (currentPaintingAction == 1){
                         McShape myMcPoint = new Plot(drawStart.getX(), drawStart.getY(), edgeColour, getCanvasSize());
                         listOfMcShapes.add(myMcPoint);
+                    }
+                    if (currentPaintingAction == 2){
+                        drawEnd = new java.awt.Point(e.getX(),e.getY());
+                        McShape myMcLine = new Line(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, getCanvasSize());
+                        listOfMcShapes.add(myMcLine);
                     }
 
                     repaint();
