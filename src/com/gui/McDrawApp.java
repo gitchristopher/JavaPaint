@@ -13,9 +13,19 @@ import java.awt.event.ActionListener;
 
 public class McDrawApp extends JFrame
 {
-    public static boolean lineButton = true;
-    public static boolean recButton = false;
-    public static boolean markerButton = false;
+    //TODO: change the paintingActionNumber to a ENUM like superpower enum from tutorial?
+    //Monitors which paint action was last selected by the user
+    public static int currentPaintingAction = 0;
+    public static boolean currentlyDrawing = false;
+    //TODO: rename tf, im not sure what its for
+    //UI Elements
+    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
+    JTextField tf;
+    JPanel easelPanel;
+
+    //Default the colours to black and no colour
+    public static Color edgeColour = Color.BLACK, fillColour = null;
+
 
     public static void main(String [] args)
     {
@@ -44,9 +54,36 @@ public class McDrawApp extends JFrame
         fileButton.add(saveOption);
 
 
+        //Bottom Menu Bar
+        //Creating the panel at bottom and adding components
+        JPanel bottomPanel = new JPanel(); // the panel is not visible in output
+
+        btnSelectMarker = MakePaintToolButton(1,"Place a marker","Click to place a marker");
+        btnSelectLine = MakePaintToolButton(2,"Draw Lines","Click to draw lines");
+        btnSelectRectangle = MakePaintToolButton(3,"Draw Rectangles","Click to draw rectangles");
+        btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
+        btnReset = MakeFunctionalButton("Reset","Clears text field",2);
+        btnSelectEdgeColour = MakeFunctionalButton("Edge Colour","Select an edge colour",3);
+        btnSelectFillColour = MakeFunctionalButton("Fill Colour","Select a fill colour",4);
+        btnSaveVec = MakeFunctionalButton("Save File","Save your drawing",5);
+
+        JLabel label = new JLabel("Enter Text");
+        tf = new JTextField(10); // accepts up to 10 characters
+
+        bottomPanel.add(btnSelectEdgeColour);
+        bottomPanel.add(btnSelectFillColour);
+        bottomPanel.add(btnSelectMarker);
+        bottomPanel.add(btnSelectLine);
+        bottomPanel.add(btnSelectRectangle);
+        bottomPanel.add(label); // Components Added using Flow Layout
+        bottomPanel.add(tf);
+        bottomPanel.add(btnSend);
+        bottomPanel.add(btnReset);
+        bottomPanel.add(btnSaveVec);
+
+
         //This is the panel which will hold the canvas to be painted on
         JPanel easelPanel = new JPanel();
-        //bottomMenuPanel.addMouseListener();
         easelPanel.setLocation(5, 5);
         easelPanel.setSize(570, 500);
         easelPanel.setBackground(Color.lightGray);
@@ -55,76 +92,84 @@ public class McDrawApp extends JFrame
         theCanvas.setLayout(null);
         easelPanel.add(theCanvas);
 
-        //Bottom Menu Bar
-        //Creating the panel at bottom and adding components
-        JPanel bottomPanel = new JPanel(); // the panel is not visible in output
-        JButton drawLine = new JButton("Draw Lines");
-        drawLine.setToolTipText("Click here to draw lines");
-        JButton drawRec = new JButton("Draw Rectangles");
-        drawRec.setToolTipText("Click here to draw rectangles");
-        JButton drawMarker = new JButton("Place a marker");
-        drawMarker.setToolTipText("Click here to place a marker");
-        JLabel label = new JLabel("Enter Text");
-        JTextField tf = new JTextField(10); // accepts up to 10 characters
-        JButton send = new JButton("Send");
-        JButton reset = new JButton("Reset");
-        reset.setToolTipText("Clears text field");
-        bottomPanel.add(drawLine);
-        bottomPanel.add(drawRec);
-        bottomPanel.add(drawMarker);
-        bottomPanel.add(label); // Components Added using Flow Layout
-        bottomPanel.add(label); // Components Added using Flow Layout
-        bottomPanel.add(tf);
-        bottomPanel.add(send);
-        bottomPanel.add(reset);
-
 
         //Adding Components to the frame.
         this.add(BorderLayout.SOUTH, bottomPanel);
         this.add(BorderLayout.NORTH, menuBar);
         this.add(BorderLayout.CENTER, easelPanel);
         this.setVisible(true);
-
-        drawLine.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Makes drawLine button value true and all else false
-                lineButton = true;
-                recButton = false;
-                markerButton = false;
-                easelPanel.repaint();
-            }
-        });
-
-        drawRec.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Makes drawRec button value true and all else false
-                lineButton = false;
-                recButton = true;
-                markerButton = false;
-                easelPanel.repaint();
-            }
-        });
-
-        drawMarker.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Makes drawMarker button value true and all else false
-                lineButton = false;
-                recButton = false;
-                markerButton = true;
-                easelPanel.repaint();
-            }
-        });
+    }
 
 
-        reset.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //clear text from tf
-                tf.setText("");
-            }
-        });
+    //METHODS
+    private JButton MakePaintToolButton(final int paintingActionNumber, String buttonText, String buttonToolTip){
+        JButton myButton = new JButton();
+        myButton.setText(buttonText);
+        myButton.setToolTipText(buttonToolTip);
+
+        if (paintingActionNumber >= 0){
+            myButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    currentPaintingAction = paintingActionNumber;
+                    //TODO: Not sure if this action listener should repaint or if it should be done elsewhere
+                    easelPanel.repaint();
+                }
+            });
+        }
+
+        return myButton;
+    }
+
+    //TODO: Change name of MakeFunctionalButton, im not sure what these buttons are meant to do with the text field
+    //Makes a new button adding in the button text and tooltip,
+    //the button ID determines what action listener function gets added to the button
+    private JButton MakeFunctionalButton(String buttonText, String buttonToolTip, final int buttonId){
+        JButton myButton = new JButton();
+        myButton.setText(buttonText);
+        myButton.setToolTipText(buttonToolTip);
+
+        switch(buttonId) {
+            case 1:
+                //TODO: Add listener to send button on bottom menu bar
+                //code block
+                break;
+            case 2:
+                myButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //clear text from tf //TODO: update the comment once tf has been renamed
+                        tf.setText("");
+                    }
+                });
+                break;
+            case 3:
+                myButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        edgeColour = JColorChooser.showDialog(null,  "Select an edge colour", Color.BLACK);
+                    }
+                });
+                break;
+            case 4:
+                myButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        fillColour = JColorChooser.showDialog(null,  "Select a fill colour", Color.BLACK);
+                    }
+                });
+                break;
+            case 5:
+                myButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        System.out.println("Printing...");
+                    }
+                });
+            default:
+                //TODO: do something better for the default switch of the button maker function
+                //code block
+        }
+
+        return myButton;
+    }
+
+    public int getCurrentPaintAction(){
+        return currentPaintingAction;
     }
 }
