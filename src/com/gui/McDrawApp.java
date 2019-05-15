@@ -19,7 +19,7 @@ public class McDrawApp extends JFrame
     public static boolean currentlyDrawing = false;
     //TODO: rename tf, im not sure what its for
     //UI Elements
-    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
+    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
     JTextField tf;
     JPanel easelPanel;
 
@@ -37,7 +37,7 @@ public class McDrawApp extends JFrame
         //Set the default values for the applications GUI
         this.setTitle("McDrawApp - Vector Design Tool");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800, 600);
+        this.setSize(700, 600);
 
         //Top Menu Bar
         //Creating the MenuBar and adding components
@@ -56,11 +56,13 @@ public class McDrawApp extends JFrame
 
         //Bottom Menu Bar
         //Creating the panel at bottom and adding components
-        JPanel bottomPanel = new JPanel(); // the panel is not visible in output
-
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // the panel is not visible in output
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
         btnSelectMarker = MakePaintToolButton(1,"Place a marker","Click to place a marker");
         btnSelectLine = MakePaintToolButton(2,"Draw Lines","Click to draw lines");
         btnSelectRectangle = MakePaintToolButton(3,"Draw Rectangles","Click to draw rectangles");
+        btnSelectEllipse = MakePaintToolButton(4,"Draw Ellipses","Click to draw Ellipses");
+
         btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
         btnReset = MakeFunctionalButton("Reset","Clears text field",2);
         btnSelectEdgeColour = MakeFunctionalButton("Edge Colour","Select an edge colour",3);
@@ -70,22 +72,38 @@ public class McDrawApp extends JFrame
         JLabel label = new JLabel("Enter Text");
         tf = new JTextField(10); // accepts up to 10 characters
 
+        //add buttons
         bottomPanel.add(btnSelectEdgeColour);
         bottomPanel.add(btnSelectFillColour);
         bottomPanel.add(btnSelectMarker);
         bottomPanel.add(btnSelectLine);
         bottomPanel.add(btnSelectRectangle);
+        bottomPanel.add(btnSelectEllipse);
         bottomPanel.add(label); // Components Added using Flow Layout
         bottomPanel.add(tf);
         bottomPanel.add(btnSend);
         bottomPanel.add(btnReset);
         bottomPanel.add(btnSaveVec);
+        //Align buttons
+        btnSelectEdgeColour.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectFillColour.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectMarker.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectLine.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectRectangle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectEllipse.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        tf.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSend.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnReset.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSaveVec.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //Size buttons
+        //TODO uniform buttons
 
 
         //This is the panel which will hold the canvas to be painted on
         JPanel easelPanel = new JPanel();
         easelPanel.setLocation(5, 5);
-        easelPanel.setSize(570, 500);
+        easelPanel.setSize(500, 500);
         easelPanel.setBackground(Color.lightGray);
         easelPanel.setLayout(new BorderLayout());
         McCanvas theCanvas = new McCanvas();
@@ -94,7 +112,7 @@ public class McDrawApp extends JFrame
 
 
         //Adding Components to the frame.
-        this.add(BorderLayout.SOUTH, bottomPanel);
+        this.add(BorderLayout.WEST, bottomPanel);
         this.add(BorderLayout.NORTH, menuBar);
         this.add(BorderLayout.CENTER, easelPanel);
         this.setVisible(true);

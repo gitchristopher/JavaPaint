@@ -4,9 +4,11 @@ import com.shapes.McShape;
 import com.shapes.Line;
 import com.shapes.Plot;
 import com.shapes.Rectangle;
+import com.shapes.Ellipse;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -18,14 +20,6 @@ import static com.gui.McDrawApp.*;
 
 public class McCanvas extends JComponent
 {
-
-    //private Point p1 = new Point();
-    //private Point p2 = new Point();
-    //private List listLine = new ArrayList();
-    //private List listRec = new ArrayList();
-    //private List listMarker = new ArrayList();
-    //private Line line;
-    //private int clicks = 0;
 
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
     java.awt.Point drawStart, drawEnd;
@@ -65,6 +59,11 @@ public class McCanvas extends JComponent
                     drawEnd = new java.awt.Point(e.getX(),e.getY());
                     McShape myMcRectangle = new Rectangle(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
                     listOfMcShapes.add(myMcRectangle);
+                }
+                if (currentPaintingAction == 4){
+                    drawEnd = new java.awt.Point(e.getX(),e.getY());
+                    McShape myMcEllipse = new Ellipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
+                    listOfMcShapes.add(myMcEllipse);
                 }
                 //repaint refreshes a number of things, paint being one of them, that is why the method is below
                 repaint();
@@ -118,6 +117,9 @@ public class McCanvas extends JComponent
             if (currentPaintingAction == 3){
                 myTempShape = drawRectangle(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
             }
+            if (currentPaintingAction == 4){
+                myTempShape = drawEllipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
+            }
 
             graphicSettings.draw(myTempShape);
         }
@@ -155,5 +157,17 @@ public class McCanvas extends JComponent
         Double height = Math.abs(y1 - y2);
 
         return new Rectangle2D.Double(x, y, width, height);
+    }
+    private Ellipse2D.Double drawEllipse(double x1, double y1, double x2, double y2){
+
+        //Gets the top lefthand corner by finding the closest value to zero
+        Double x = Math.min(x1, x2);
+        Double y = Math.min(y1, y2);
+
+        //Determines the width and height of the rectangle, GO MATHS!
+        Double width = Math.abs(x1 - x2);
+        Double height = Math.abs(y1 - y2);
+
+        return new Ellipse2D.Double(x, y, width, height);
     }
 }
