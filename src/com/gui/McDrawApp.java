@@ -19,7 +19,7 @@ public class McDrawApp extends JFrame
     public static boolean currentlyDrawing = false;
     //TODO: rename tf, im not sure what its for
     //UI Elements
-    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
+    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
     JTextField tf;
     JPanel easelPanel;
 
@@ -58,10 +58,11 @@ public class McDrawApp extends JFrame
         //Creating the panel at bottom and adding components
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // the panel is not visible in output
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
-        btnSelectMarker = MakePaintToolButton(1,"Place a marker","Click to place a marker");
-        btnSelectLine = MakePaintToolButton(2,"Draw Lines","Click to draw lines");
-        btnSelectRectangle = MakePaintToolButton(3,"Draw Rectangles","Click to draw rectangles");
-        btnSelectEllipse = MakePaintToolButton(4,"Draw Ellipses","Click to draw Ellipses");
+        btnSelectMarker = MakePaintToolButton(1,"Plot a marker","Click to plot a marker");
+        btnSelectLine = MakePaintToolButton(2,"Draw Lines","Click and drag to draw lines");
+        btnSelectRectangle = MakePaintToolButton(3,"Draw Rectangles","Click and drag to draw rectangles");
+        btnSelectEllipse = MakePaintToolButton(4,"Draw Ellipses","Click and drag to draw Ellipses");
+        btnSelectPolygon = MakePaintToolButton(5,"Draw Polygon","Left click to plot points, right mouse click to finish");
 
         btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
         btnReset = MakeFunctionalButton("Reset","Clears text field",2);
@@ -79,6 +80,7 @@ public class McDrawApp extends JFrame
         bottomPanel.add(btnSelectLine);
         bottomPanel.add(btnSelectRectangle);
         bottomPanel.add(btnSelectEllipse);
+        bottomPanel.add(btnSelectPolygon);
         bottomPanel.add(label); // Components Added using Flow Layout
         bottomPanel.add(tf);
         bottomPanel.add(btnSend);
@@ -91,6 +93,7 @@ public class McDrawApp extends JFrame
         btnSelectLine.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSelectRectangle.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSelectEllipse.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         tf.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSend.setAlignmentX(Component.CENTER_ALIGNMENT);

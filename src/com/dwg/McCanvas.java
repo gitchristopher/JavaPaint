@@ -6,6 +6,7 @@ import com.shapes.Plot;
 import com.shapes.Rectangle;
 import com.shapes.Ellipse;
 
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
@@ -37,6 +38,7 @@ public class McCanvas extends JComponent
                 if (currentPaintingAction > 0){
                     drawStart = new java.awt.Point(e.getX(),e.getY());
                 }
+
             }
         });
         this.addMouseListener(new MouseAdapter() {
