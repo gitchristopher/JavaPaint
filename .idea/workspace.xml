@@ -36,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="240">
               <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -66,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/shapes/McShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -75,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/shapes/Plot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+            <state relative-caret-position="308">
+              <caret line="50" column="35" lean-forward="true" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#478#479#0" expanded="true" />
@@ -92,13 +92,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tests/TestPlot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+            <state relative-caret-position="1887">
+              <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#508#509#0" expanded="true" />
+                <element signature="e#573#574#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
                 <element signature="e#217#218#0" expanded="true" />
                 <element signature="e#243#244#0" expanded="true" />
               </folding>
@@ -134,10 +138,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tests/TestEllipse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="206">
               <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -152,7 +156,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/exceptions/McDrawAppExceptions.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -191,22 +195,22 @@
         <option value="$PROJECT_DIR$/src/com/gui/drawing.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/McShape.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/Line.java" />
-        <option value="$PROJECT_DIR$/src/com/shapes/Plot.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/Ellipse.java" />
         <option value="$PROJECT_DIR$/src/com/shapes/Polygon.java" />
         <option value="$PROJECT_DIR$/src/com/dwg/McCanvas.java" />
         <option value="$PROJECT_DIR$/src/com/gui/McDrawApp.java" />
         <option value="$PROJECT_DIR$/src/com/tests/TestShapes.java" />
-        <option value="$PROJECT_DIR$/src/com/tests/TestPlot.java" />
         <option value="$PROJECT_DIR$/src/com/exceptions/McDrawAppExceptions.java" />
         <option value="$PROJECT_DIR$/src/com/tests/TestEllipse.java" />
         <option value="$PROJECT_DIR$/src/com/tests/TestRectangle.java" />
         <option value="$PROJECT_DIR$/src/com/tests/TestLine.java" />
+        <option value="$PROJECT_DIR$/src/com/shapes/Plot.java" />
+        <option value="$PROJECT_DIR$/src/com/tests/TestPlot.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="621" />
     <option name="y" value="-18" />
     <option name="width" value="975" />
@@ -248,13 +252,6 @@
               <item name="CAB302Assignment2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CAB302Assignment2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CAB302Assignment2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -263,13 +260,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="shapes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CAB302Assignment2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CAB302Assignment2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -309,56 +299,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestEllipse.testEllipseConstruction">
-    <configuration name="TestEllipse.testEllipseConstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAB302Assignment2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.tests.TestEllipse" />
-      <option name="METHOD_NAME" value="testEllipseConstruction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestLine.testLineConstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAB302Assignment2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.tests.TestLine" />
-      <option name="METHOD_NAME" value="testLineConstruction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestLine.testPlotConstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CAB302Assignment2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.tests.TestLine" />
-      <option name="METHOD_NAME" value="testPlotConstruction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestPlot.testPlotConstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestPlot">
+    <configuration name="TestPlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAB302Assignment2" />
       <extension name="coverage">
         <pattern>
@@ -368,13 +310,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.tests" />
       <option name="MAIN_CLASS_NAME" value="com.tests.TestPlot" />
-      <option name="METHOD_NAME" value="testPlotConstruction" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRectangle.testRectangleConstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestPlot.testPlotCanvasResize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CAB302Assignment2" />
       <extension name="coverage">
         <pattern>
@@ -383,27 +324,75 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.tests.TestRectangle" />
-      <option name="METHOD_NAME" value="testRectangleConstruction" />
+      <option name="MAIN_CLASS_NAME" value="com.tests.TestPlot" />
+      <option name="METHOD_NAME" value="testPlotCanvasResize" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPlot.testPlotConvertVector" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAB302Assignment2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.tests.TestPlot" />
+      <option name="METHOD_NAME" value="testPlotConvertVector" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPlot.testPlotCreateShape" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAB302Assignment2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.tests.TestPlot" />
+      <option name="METHOD_NAME" value="testPlotCreateShape" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPlot.testPlotDraw" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CAB302Assignment2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.tests.TestPlot" />
+      <option name="METHOD_NAME" value="testPlotDraw" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TestPlot.testPlotConstruction" />
-      <item itemvalue="JUnit.TestLine.testPlotConstruction" />
-      <item itemvalue="JUnit.TestRectangle.testRectangleConstruction" />
-      <item itemvalue="JUnit.TestLine.testLineConstruction" />
-      <item itemvalue="JUnit.TestEllipse.testEllipseConstruction" />
+      <item itemvalue="JUnit.TestPlot.testPlotCanvasResize" />
+      <item itemvalue="JUnit.TestPlot.testPlotCreateShape" />
+      <item itemvalue="JUnit.TestPlot.testPlotConvertVector" />
+      <item itemvalue="JUnit.TestPlot.testPlotDraw" />
+      <item itemvalue="JUnit.TestPlot" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestEllipse.testEllipseConstruction" />
-        <item itemvalue="JUnit.TestRectangle.testRectangleConstruction" />
-        <item itemvalue="JUnit.TestLine.testLineConstruction" />
-        <item itemvalue="JUnit.TestLine.testPlotConstruction" />
-        <item itemvalue="JUnit.TestPlot.testPlotConstruction" />
+        <item itemvalue="JUnit.TestPlot" />
+        <item itemvalue="JUnit.TestPlot.testPlotDraw" />
+        <item itemvalue="JUnit.TestPlot.testPlotCreateShape" />
+        <item itemvalue="JUnit.TestPlot.testPlotConvertVector" />
+        <item itemvalue="JUnit.TestPlot.testPlotCanvasResize" />
       </list>
     </recent_temporary>
   </component>
@@ -421,27 +410,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestShapes_testPlotConstruction - 2019.05.16 at 18h 55m 00s.xml">
-      <configuration name="TestShapes.testPlotConstruction" configurationId="JUnit" />
+    <history-entry file="TestPlot_testPlotCanvasResize - 2019.05.16 at 19h 37m 42s.xml">
+      <configuration name="TestPlot.testPlotCanvasResize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLine_testPlotConstruction - 2019.05.16 at 19h 01m 46s.xml">
-      <configuration name="TestLine.testPlotConstruction" configurationId="JUnit" />
+    <history-entry file="TestPlot_testPlotCreateShape - 2019.05.16 at 20h 05m 48s.xml">
+      <configuration name="TestPlot.testPlotCreateShape" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestRectangle_testRectangleConstruction - 2019.05.16 at 19h 06m 35s.xml">
-      <configuration name="TestRectangle.testRectangleConstruction" configurationId="JUnit" />
+    <history-entry file="TestPlot_testPlotCreateShape - 2019.05.16 at 20h 06m 12s.xml">
+      <configuration name="TestPlot.testPlotCreateShape" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLine_testLineConstruction - 2019.05.16 at 19h 06m 41s.xml">
-      <configuration name="TestLine.testLineConstruction" configurationId="JUnit" />
+    <history-entry file="TestPlot_testPlotCreateShape - 2019.05.16 at 20h 06m 52s.xml">
+      <configuration name="TestPlot.testPlotCreateShape" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestRectangle_testRectangleConstruction - 2019.05.16 at 19h 07m 04s.xml">
-      <configuration name="TestRectangle.testRectangleConstruction" configurationId="JUnit" />
+    <history-entry file="TestPlot_testPlotConvertVector - 2019.05.16 at 20h 07m 22s.xml">
+      <configuration name="TestPlot.testPlotConvertVector" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPlot_testPlotCreateShape - 2019.05.16 at 20h 12m 25s.xml">
+      <configuration name="TestPlot.testPlotCreateShape" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPlot_testPlotCreateShape - 2019.05.16 at 20h 12m 52s.xml">
+      <configuration name="TestPlot.testPlotCreateShape" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPlot_testPlotCreateShape - 2019.05.16 at 20h 14m 08s.xml">
+      <configuration name="TestPlot.testPlotCreateShape" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPlot_testPlotDraw - 2019.05.16 at 20h 41m 36s.xml">
+      <configuration name="TestPlot.testPlotDraw" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPlot_testPlotDraw - 2019.05.16 at 20h 42m 15s.xml">
+      <configuration name="TestPlot.testPlotDraw" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="937" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17137703" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17137703" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -450,7 +454,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3287841" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32630274" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32630274" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -458,7 +462,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32754344" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -507,53 +511,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/shapes/McShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/shapes/Ellipse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/shapes/Plot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#556#557#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#854#855#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6236#6237#0" expanded="true" />
-            <element signature="e#6286#6287#0" expanded="true" />
-            <element signature="e#6328#6329#0" expanded="true" />
-            <element signature="e#6639#6640#0" expanded="true" />
-            <element signature="e#6691#6692#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -565,22 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tests/TestPlot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
-            <element signature="e#243#244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/exceptions/McDrawAppExceptions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -610,12 +561,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tests/TestEllipse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="206">
           <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#568#569#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6197#6198#0" expanded="true" />
+            <element signature="e#6236#6237#0" expanded="true" />
+            <element signature="e#6286#6287#0" expanded="true" />
+            <element signature="e#6328#6329#0" expanded="true" />
+            <element signature="e#6639#6640#0" expanded="true" />
+            <element signature="e#6691#6692#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/shapes/McShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/shapes/Plot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="50" column="35" lean-forward="true" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#698#699#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#802#803#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tests/TestPlot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1887">
+          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
           </folding>
         </state>
       </provider>
