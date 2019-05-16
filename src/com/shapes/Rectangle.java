@@ -24,6 +24,22 @@ public class Rectangle extends McShape
     }
     //SETTERS AND GETTERS
 
+    public double getStartX() {
+        return _x1;
+    }
+    public double getStartY() {
+        return _y1;
+    }
+    public double getEndX() {
+        return _x2;
+    }
+    public Color getEdgeColour() {
+        return _edgeColour;
+    }
+    public Color getFillColour() {
+        return _fillColour;
+    }
+
     //METHODS
     private double convertToVector(double num, int canvasSize){
         return num / canvasSize;

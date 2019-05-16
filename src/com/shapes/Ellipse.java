@@ -22,7 +22,25 @@ public class Ellipse extends McShape
         this._x2 = convertToVector(x2, canvasSize);
         this._y2 = convertToVector(y2, canvasSize);
     }
+
     //SETTERS AND GETTERS
+
+    public double getStartX() {
+        return _x1;
+    }
+    public double getStartY() {
+        return _y1;
+    }
+    public double getEndX() {
+        return _x2;
+    }
+    public Color getEdgeColour() {
+        return _edgeColour;
+    }
+    public Color getFillColour() {
+        return _fillColour;
+    }
+
 
     //METHODS
     private double convertToVector(double num, int canvasSize){

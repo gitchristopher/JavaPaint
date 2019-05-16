@@ -30,6 +30,9 @@ public class Plot extends McShape
         return _y;
     }
 
+    public Color getColor() {
+        return _colour;
+    }
 
     //METHODS
 

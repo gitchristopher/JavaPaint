@@ -20,6 +20,21 @@ public class Line extends McShape
         this._endPoint = new Plot(x2, y2, colour, canvasSize);
     }
 
+
+    //SETTERS AND GETTERS
+
+    public Plot getStartPlot() {
+        return _startPoint;
+    }
+
+    public Plot getEndPlot() {
+        return _endPoint;
+    }
+
+    public Color getColor() {
+        return _colour;
+    }
+
     //METHODS
 
     private Line2D.Double createShape(double x1, double y1, double x2, double y2){
