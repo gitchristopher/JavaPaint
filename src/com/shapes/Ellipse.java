@@ -34,6 +34,9 @@ public class Ellipse extends McShape
     public double getEndX() {
         return _x2;
     }
+    public double getEndY() {
+        return _y2;
+    }
     public Color getEdgeColour() {
         return _edgeColour;
     }

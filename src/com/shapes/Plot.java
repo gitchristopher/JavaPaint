@@ -20,7 +20,7 @@ public class Plot extends McShape
         this._y = convertToVector(y,canvasSize);
     }
 
-    //ACCESSORS AND SETTORS
+    //ACCESSORS AND SETTERS
 
     public double getX() {
         return _x;

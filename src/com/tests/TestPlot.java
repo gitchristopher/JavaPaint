@@ -12,16 +12,10 @@ import java.awt.geom.Line2D;
 public class TestPlot
 {
     //Set up helpers
-    Double x;
-    Double y;
+    double x;
+    double y;
     Color colour = Color.BLACK;
     int canvasSize;
-
-    //Converts a given number to the vector equivalent.
-    private double convertToVector(double num, int canvasSize)
-    {
-        return num / canvasSize;
-    }
 
     private Line2D.Double createShape(double x, double y)
     {
@@ -98,7 +92,7 @@ public class TestPlot
         plot = new Plot(x,y,colour,canvasSize);
         assertEquals(0.005, plot.getX());
     }
-    /*Test 7: Test creatShape
+    /*Test 7: Test createShape
      */
     @Test
     public void testPlotCreateShape(){
