@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,9 @@ public class McCanvas extends JComponent
 {
 
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
-    java.awt.Point drawStart, drawEnd;
+    //java.awt.Point[] xCoord, yCoord;  // Arrays to hold the coordinates.
+    //public int pointNum = 0;          // Number of points in the arrays.
+    java.awt.Point drawStart, drawEnd, firstPoint;
     Graphics2D graphicSettings;
 
 
@@ -35,12 +38,18 @@ public class McCanvas extends JComponent
                 currentlyDrawing = true;
                 Double startX = 0.0, startY = 0.0;
                 System.out.println("Current action: "+currentPaintingAction);
-                if (currentPaintingAction > 0){
+                if (currentPaintingAction != 5){
                     drawStart = new java.awt.Point(e.getX(),e.getY());
                 }
-
+                if (currentPaintingAction == 5 && drawStart != null){
+                    //do nothing
+                }else{
+                    drawStart = new java.awt.Point(e.getX(),e.getY());
+                    firstPoint = drawStart;
+                }
             }
         });
+
         this.addMouseListener(new MouseAdapter() {
             Shape myNewShape = null;
 
@@ -67,12 +76,24 @@ public class McCanvas extends JComponent
                     McShape myMcEllipse = new Ellipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
                     listOfMcShapes.add(myMcEllipse);
                 }
+                if (currentPaintingAction == 5){
+                    drawEnd = new java.awt.Point(e.getX(),e.getY());
+                    McShape myMcLine = new Line(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, getCanvasSize());
+                    listOfMcShapes.add(myMcLine);
+                }
                 //repaint refreshes a number of things, paint being one of them, that is why the method is below
                 repaint();
-                drawStart = null;
-                drawEnd = null;
+                if (currentPaintingAction == 5) {
+                    drawStart = drawEnd;
+                    drawEnd = null;
+                    repaint();
+                }else{
+                    drawStart = null;
+                    drawEnd = null;
+                }
             }
         });
+
         this.addMouseMotionListener(new MouseMotionAdapter(){
             @Override
             public void mouseDragged(MouseEvent e){
@@ -91,6 +112,8 @@ public class McCanvas extends JComponent
             }
         });
     }
+
+
 
 
     //METHODS
@@ -121,6 +144,9 @@ public class McCanvas extends JComponent
             }
             if (currentPaintingAction == 4){
                 myTempShape = drawEllipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
+            }
+            if (currentPaintingAction == 5){
+                myTempShape = drawLine(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
             }
 
             graphicSettings.draw(myTempShape);

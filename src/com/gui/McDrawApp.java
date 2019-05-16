@@ -19,7 +19,7 @@ public class McDrawApp extends JFrame
     public static boolean currentlyDrawing = false;
     //TODO: rename tf, im not sure what its for
     //UI Elements
-    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
+    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
     JTextField tf;
     JPanel easelPanel;
 
@@ -62,7 +62,8 @@ public class McDrawApp extends JFrame
         btnSelectLine = MakePaintToolButton(2,"Draw Lines","Click and drag to draw lines");
         btnSelectRectangle = MakePaintToolButton(3,"Draw Rectangles","Click and drag to draw rectangles");
         btnSelectEllipse = MakePaintToolButton(4,"Draw Ellipses","Click and drag to draw Ellipses");
-        btnSelectPolygon = MakePaintToolButton(5,"Draw Polygon","Left click to plot points, right mouse click to finish");
+        btnSelectPolygon = MakePaintToolButton(5,"Draw Polygon","Left click to plot points, click 'Finish Polygon' to complete");
+        btnSelectFinPolygon = MakePaintToolButton(6,"Finish Polygon","Click here to connect final line of your polygon");
 
         btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
         btnReset = MakeFunctionalButton("Reset","Clears text field",2);
@@ -81,6 +82,7 @@ public class McDrawApp extends JFrame
         bottomPanel.add(btnSelectRectangle);
         bottomPanel.add(btnSelectEllipse);
         bottomPanel.add(btnSelectPolygon);
+        bottomPanel.add(btnSelectFinPolygon);
         bottomPanel.add(label); // Components Added using Flow Layout
         bottomPanel.add(tf);
         bottomPanel.add(btnSend);
@@ -94,6 +96,7 @@ public class McDrawApp extends JFrame
         btnSelectRectangle.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSelectEllipse.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSelectPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnSelectFinPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         tf.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSend.setAlignmentX(Component.CENTER_ALIGNMENT);
