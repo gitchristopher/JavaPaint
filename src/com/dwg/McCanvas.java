@@ -16,6 +16,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import javax.swing.event.MouseInputListener;
 
 import static com.gui.McDrawApp.*;
@@ -39,12 +40,12 @@ public class McCanvas extends JComponent
                 Double startX = 0.0, startY = 0.0;
                 System.out.println("Current action: "+currentPaintingAction);
                 if (currentPaintingAction != 5){
-                    drawStart = new java.awt.Point(e.getX(),e.getY());
+                    drawStart = new Point(e.getX(),e.getY());
                 }
                 if (currentPaintingAction == 5 && drawStart != null){
                     //do nothing
                 }else{
-                    drawStart = new java.awt.Point(e.getX(),e.getY());
+                    drawStart = new Point(e.getX(),e.getY());
                     firstPoint = drawStart;
                 }
             }
@@ -62,22 +63,22 @@ public class McCanvas extends JComponent
                     listOfMcShapes.add(myMcPoint);
                 }
                 if (currentPaintingAction == 2){
-                    drawEnd = new java.awt.Point(e.getX(),e.getY());
+                    drawEnd = new Point(e.getX(),e.getY());
                     McShape myMcLine = new Line(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, getCanvasSize());
                     listOfMcShapes.add(myMcLine);
                 }
                 if (currentPaintingAction == 3){
-                    drawEnd = new java.awt.Point(e.getX(),e.getY());
+                    drawEnd = new Point(e.getX(),e.getY());
                     McShape myMcRectangle = new Rectangle(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
                     listOfMcShapes.add(myMcRectangle);
                 }
                 if (currentPaintingAction == 4){
-                    drawEnd = new java.awt.Point(e.getX(),e.getY());
+                    drawEnd = new Point(e.getX(),e.getY());
                     McShape myMcEllipse = new Ellipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
                     listOfMcShapes.add(myMcEllipse);
                 }
                 if (currentPaintingAction == 5){
-                    drawEnd = new java.awt.Point(e.getX(),e.getY());
+                    drawEnd = new Point(e.getX(),e.getY());
                     McShape myMcLine = new Line(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, getCanvasSize());
                     listOfMcShapes.add(myMcLine);
                 }
@@ -98,7 +99,7 @@ public class McCanvas extends JComponent
             @Override
             public void mouseDragged(MouseEvent e){
                 if (currentlyDrawing){
-                    drawEnd = new java.awt.Point(e.getX(), e.getY());
+                    drawEnd = new Point(e.getX(), e.getY());
                     repaint();
                 }
             }

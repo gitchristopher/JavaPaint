@@ -1,6 +1,8 @@
 package com.gui;
 import com.dwg.McCanvas;
 import com.shapes.McShape;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 
 import java.awt.*;
