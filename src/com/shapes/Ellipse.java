@@ -2,6 +2,7 @@ package com.shapes;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.text.DecimalFormat;
 
 public class Ellipse extends McShape
 {
@@ -37,11 +38,17 @@ public class Ellipse extends McShape
     public double getEndY() {
         return _y2;
     }
-    public Color getEdgeColour() {
-        return _edgeColour;
+
+    @Override
+    public Color getEdgeColour()
+    {
+        return this._edgeColour;
     }
-    public Color getFillColour() {
-        return _fillColour;
+
+    @Override
+    public Color getFillColour()
+    {
+        return this._fillColour;
     }
 
 
@@ -71,5 +78,17 @@ public class Ellipse extends McShape
             g.setPaint(this._fillColour);
             g.fill(s);
         }
+    }
+
+    @Override
+    public String commandExport()
+    {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String x1 = decimalFormat.format(_x1);
+        String y1 = decimalFormat.format(_y1);
+        String x2 = decimalFormat.format(_x2);
+        String y2 = decimalFormat.format(_y2);
+
+        return "ELLIPSE "+x1+" "+y1+" "+x2+" "+y2;
     }
 }

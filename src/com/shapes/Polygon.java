@@ -3,6 +3,7 @@ package com.shapes;
 import java.awt.*;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.gui.McDrawApp.isPolyOpen;
@@ -101,6 +102,18 @@ public class Polygon extends McShape
     }
 
     @Override
+    public Color getEdgeColour()
+    {
+        return this._edgeColour;
+    }
+
+    @Override
+    public Color getFillColour()
+    {
+        return this._fillColour;
+    }
+
+    @Override
     public void draw(Graphics2D g, int currentCanvasSize)
     {
 
@@ -126,5 +139,24 @@ public class Polygon extends McShape
         }
         g.setPaint(this._edgeColour);
         g.draw(s);
+    }
+
+    @Override
+    public String commandExport()
+    {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+        StringBuilder coordinates = new StringBuilder();
+
+        for (int i = 0; i < _xPoly.length; i++)
+        {
+            coordinates.append(decimalFormat.format(_xPoly[i]));
+            coordinates.append(" ");
+            coordinates.append(decimalFormat.format(_yPoly[i]));
+            coordinates.append(" ");
+        }
+        coordinates.deleteCharAt(coordinates.lastIndexOf(" "));
+
+        return "POLYGON "+coordinates.toString();
     }
 }

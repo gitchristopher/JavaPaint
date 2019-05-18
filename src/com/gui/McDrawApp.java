@@ -1,5 +1,6 @@
 package com.gui;
 import com.dwg.McCanvas;
+import com.files.VecFile;
 import com.shapes.McShape;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
@@ -12,6 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import static com.dwg.McCanvas.*;
 
 public class McDrawApp extends JFrame
 {
@@ -25,7 +27,7 @@ public class McDrawApp extends JFrame
     JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
     JTextField tf;
     JPanel easelPanel;
-
+    McCanvas _theCanvas;
     //Default the colours to black and no colour
     public static Color edgeColour = Color.BLACK, fillColour = null;
 
@@ -56,6 +58,16 @@ public class McDrawApp extends JFrame
         fileButton.add(openOption);
         fileButton.add(saveOption);
 
+        openOption.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openFile();
+            }
+        });
+        saveOption.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveFile();
+            }
+        });
 
         //Bottom Menu Bar
         //Creating the panel at bottom and adding components
@@ -115,9 +127,9 @@ public class McDrawApp extends JFrame
         easelPanel.setSize(500, 500);
         easelPanel.setBackground(Color.lightGray);
         easelPanel.setLayout(new BorderLayout());
-        McCanvas theCanvas = new McCanvas();
-        theCanvas.setLayout(null);
-        easelPanel.add(theCanvas);
+        _theCanvas = new McCanvas();
+        _theCanvas.setLayout(null);
+        easelPanel.add(_theCanvas);
 
 
         //Adding Components to the frame.
@@ -200,7 +212,25 @@ public class McDrawApp extends JFrame
         return currentPaintingAction;
     }
 
+
+
+
+
     public void saveFile(){
+
+        ArrayList<McShape> tempListOfMcShapes = this._theCanvas.getMcShapesList();
+
+        for (McShape s:tempListOfMcShapes)
+        {
+            System.out.println(s);
+        }
+
+        System.out.println("Save file");
+        VecFile x = new VecFile();
+        x.SaveFileDlg(tempListOfMcShapes);
+
+    }
+    public void openFile(){
         //Component c = this.easelPanel.getComponent(0);
 //
         //Canvas can = (Canvas)c;
@@ -212,6 +242,8 @@ public class McDrawApp extends JFrame
         //{
         //    System.out.println(s);
         //}
-
+        System.out.println("Open file");
+        VecFile x = new VecFile();
+        x.OpenFileDlg();
     }
 }
