@@ -1,6 +1,10 @@
 package com.files;
 
-import com.shapes.McShape;
+import com.dwg.McCanvas;
+import com.gui.McDrawApp;
+import com.shapes.*;
+import com.shapes.Polygon;
+import com.shapes.Rectangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +17,7 @@ import javax.swing.filechooser.FileFilter;
 
 public class VecFile
 {
-    //PrintWriter shapeOutput = createFile("/Users/derekbanas/Documents/workspace3/Java Code/src/customers.txt");
+
     public VecFile()
     {
 
@@ -32,6 +36,7 @@ public class VecFile
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = jFileChooser.getSelectedFile();
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            OpenFile(selectedFile);
         }
     }
     public static void SaveFileDlg(ArrayList<McShape> McShapeList)
@@ -51,9 +56,21 @@ public class VecFile
         }
     }
 
-    private static void OpenFile()
+    private static void OpenFile(File selectedFile)
     {
 
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(selectedFile));
+            LoadData(br);
+            br.close();
+        }catch (IOException e)
+        {
+            System.out.println("An I/O Error Occurred");
+            System.exit(0);
+        }finally
+        {
+            //br.close();
+        }
     }
 
     private static void SaveFile(ArrayList<McShape> McShapeList, File aNewFile)
@@ -62,7 +79,7 @@ public class VecFile
         try
         {
             PrintWriter infoToWrite = new PrintWriter( new BufferedWriter( new FileWriter(aNewFile)));
-            writeData(McShapeList, infoToWrite);
+            WriteData(McShapeList, infoToWrite);
         }catch (IOException e)
         {
             System.out.println("An I/O Error Occurred");
@@ -70,12 +87,12 @@ public class VecFile
         }
     }
 
-    private static void writeData(ArrayList<McShape> McShapeList, PrintWriter infoToWrite)
+    private static void WriteData(ArrayList<McShape> McShapeList, PrintWriter infoToWrite)
     {
         List<String> commandList = new ArrayList<>();
 
         Color edge = Color.BLACK;
-        Color fill = Color.BLACK;
+        Color fill = null;
         boolean edgeUpdated = false;
         boolean fillUpdated = false;
         for (McShape shape:McShapeList)
@@ -100,7 +117,14 @@ public class VecFile
                     fill = shapeFillColour;
                     fillUpdated = true;
                 }
-            }
+            }else
+                {
+                    if (shapeFillColour != fill)
+                    {
+                        fill = null;
+                        fillUpdated = true;
+                    }
+                }
 
             // if boolean is true input PEN or FILL command and set the bool to false
             if (edgeUpdated)
@@ -111,7 +135,14 @@ public class VecFile
             }
             if (fillUpdated)
             {
-                String hex = "#"+Integer.toHexString(fill.getRGB()).substring(2).toUpperCase();
+                String hex;
+                if (fill == null)
+                {
+                    hex = "OFF";
+                }else
+                    {
+                        hex = "#"+Integer.toHexString(fill.getRGB()).substring(2).toUpperCase();
+                    }
                 commandList.add("FILL "+hex);
                 fillUpdated = false;
             }
@@ -126,6 +157,107 @@ public class VecFile
         }
 
         infoToWrite.close();
+    }
+
+    private static void LoadData(BufferedReader br) throws IOException
+    {
+        ArrayList<McShape> importListOfMcShapes = new ArrayList<McShape>();
+
+        try
+        {
+            Color edge = Color.BLACK;
+            Color fill = null;
+
+
+            String singleCommand = br.readLine();
+
+            while (singleCommand != null) {
+
+                // Separate the first word (the command) from the values after it
+                int i = singleCommand.indexOf(' ');
+                String command = singleCommand.substring(0, i);
+                String value = singleCommand.substring(i);
+
+                // Switch on command
+
+                switch(command) {
+                    case "PEN":
+                        // Set the edge colour
+                        String edgecolour = value.trim();
+                        Color commandEdgeColour = Color.decode(edgecolour);
+                        if (commandEdgeColour != null)
+                        {
+                            if (commandEdgeColour != edge)
+                            {
+                                edge = commandEdgeColour;
+                            }
+                        }
+                        break;
+                    case "FILL":
+                        // Set the fill colour
+                        String fillcolour = value.trim();
+                        Color commandFillColour;
+                        if (fillcolour.contains("OFF"))
+                        {
+                            commandFillColour = null;
+                        }else
+                            {
+                                commandFillColour = Color.decode(fillcolour);
+                            }
+
+                        if (commandFillColour != fill)
+                        {
+                            fill = commandFillColour;
+                        }
+
+                        break;
+                    case "PLOT":
+                        String plotValues = value.trim();
+                        Plot newPlot = new Plot(plotValues, edge, fill);
+                        importListOfMcShapes.add((McShape)newPlot);
+                        break;
+                    case "LINE":
+                        String lineValues = value.trim();
+                        Line newLine = new Line(lineValues, edge, fill);
+                        importListOfMcShapes.add((McShape)newLine);
+                        break;
+                    case "RECTANGLE":
+                        String rectValues = value.trim();
+                        Rectangle newRectangle = new Rectangle(rectValues, edge, fill);
+                        importListOfMcShapes.add((McShape)newRectangle);
+                        break;
+                    case "ELLIPSE":
+                        String ellValues = value.trim();
+                        Ellipse newEllipse = new Ellipse(ellValues, edge, fill);
+                        importListOfMcShapes.add((McShape)newEllipse);
+                        break;
+                    case "POLYGON":
+                        String polyValues = value.trim();
+                        Polygon newPolygon = new Polygon(polyValues, edge, fill);
+                        importListOfMcShapes.add((McShape)newPolygon);
+                        break;
+                    default:
+                        // code block
+                }
+
+
+
+
+                // Get the next line of the saved document
+                singleCommand = br.readLine();
+            }
+
+        }catch (IOException e)
+        {
+            System.out.println("An I/O Error Occurred");
+            System.exit(0);
+        }finally
+        {
+            br.close();
+        }
+        br.close();
+        McDrawApp.LoadedData.clear();
+        McDrawApp.LoadedData.addAll(importListOfMcShapes);
     }
 }
 

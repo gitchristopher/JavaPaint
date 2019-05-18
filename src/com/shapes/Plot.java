@@ -22,6 +22,16 @@ public class Plot extends McShape
         this._y = convertToVector(y,canvasSize);
     }
 
+    //Constructor used when loading data from a file
+    public Plot(String values, Color edgecolour, Color fillcolour)
+    {
+        this._edgeColour = edgecolour;
+
+        String[] parts = values.split(" ");
+        this._x = Double.parseDouble(parts[0]);
+        this._y = Double.parseDouble(parts[1]);
+    }
+
     //ACCESSORS AND SETTERS
 
     public double getX() {

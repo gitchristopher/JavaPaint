@@ -26,6 +26,26 @@ public class Polygon extends McShape
         _fillColour = fill;
     }
 
+    //CONSTRUCTOR used when loading data from a file
+    public Polygon(String values, Color edgecolour, Color fillcolour)
+    {
+        System.out.println(values);
+        this._edgeColour = edgecolour;
+        this._fillColour = fillcolour;
+
+        String[] parts = values.split("\\s");
+        for (int i = 0; i < parts.length; i++)
+        {
+            _xList.add(Double.parseDouble(parts[i]));
+            _yList.add(Double.parseDouble(parts[i+1]));
+            i++;
+        }
+        finishPolygon();
+    }
+
+
+
+
     public void addPlot(double xValue, double yValue, int canvasSize)
     {
         _xList.add(convertToVector(xValue, canvasSize));
@@ -65,10 +85,10 @@ public class Polygon extends McShape
         isPolyOpen = false; // variable on McDrawApp
 
         // Used when developing to see when closed
-        for (int i = 0; i < this._xPoly.length; i++)
-        {
-            System.out.println("Polygon object: X: " + _xPoly[i] + "\t|\t" + "Y: " + _yPoly[i] );
-        }
+        //for (int i = 0; i < this._xPoly.length; i++)
+        //{
+        //    System.out.println("Polygon object: X: " + _xPoly[i] + "\t|\t" + "Y: " + _yPoly[i] );
+        //}
     }
 
     private double convertToVector(double PolyNum, int canvasSize)

@@ -23,6 +23,18 @@ public class Ellipse extends McShape
         this._x2 = convertToVector(x2, canvasSize);
         this._y2 = convertToVector(y2, canvasSize);
     }
+    //CONSTRUCTOR used when loading data from a file
+    public Ellipse(String values, Color edgecolour, Color fillcolour)
+    {
+        this._edgeColour = edgecolour;
+        this._fillColour = fillcolour;
+
+        String[] parts = values.split(" ");
+        _x1 = Double.parseDouble(parts[0]);
+        _y1 = Double.parseDouble(parts[1]);
+        _x2 = Double.parseDouble(parts[2]);
+        _y2 = Double.parseDouble(parts[3]);
+    }
 
     //SETTERS AND GETTERS
 

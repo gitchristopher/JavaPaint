@@ -30,7 +30,7 @@ public class McDrawApp extends JFrame
     McCanvas _theCanvas;
     //Default the colours to black and no colour
     public static Color edgeColour = Color.BLACK, fillColour = null;
-
+    public static ArrayList<McShape> LoadedData = new ArrayList<McShape>();
 
     public static void main(String [] args)
     {
@@ -61,6 +61,7 @@ public class McDrawApp extends JFrame
         openOption.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openFile();
+                paintData();
             }
         });
         saveOption.addActionListener(new ActionListener() {
@@ -232,7 +233,7 @@ public class McDrawApp extends JFrame
     }
     public void openFile(){
         //Component c = this.easelPanel.getComponent(0);
-//
+
         //Canvas can = (Canvas)c;
         //System.out.println(can);
         //ArrayList<McShape> tempListOfMcShapes = can.getMcShapesList();
@@ -245,5 +246,10 @@ public class McDrawApp extends JFrame
         System.out.println("Open file");
         VecFile x = new VecFile();
         x.OpenFileDlg();
+    }
+    public void paintData(){
+
+
+        this._theCanvas.setMcShapesList(LoadedData);
     }
 }

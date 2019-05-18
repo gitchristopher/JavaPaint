@@ -22,6 +22,17 @@ public class Line extends McShape
         this._endPoint = new Plot(x2, y2, colour, canvasSize);
     }
 
+    //CONSTRUCTOR used when loading data from a file
+    public Line(String values, Color edgecolour, Color fillcolour)
+    {
+        this._edgeColour = edgecolour;
+
+        String[] parts = values.split(" ");
+        String sp = parts[0] + " " + parts[1];
+        String ep = parts[2] + " " + parts[3];
+        this._startPoint = new Plot(sp, edgecolour, fillcolour);
+        this._endPoint = new Plot(ep, edgecolour, fillcolour);
+    }
 
     //SETTERS AND GETTERS
 

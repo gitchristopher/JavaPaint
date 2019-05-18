@@ -221,6 +221,26 @@ public class McCanvas extends JComponent
         return this.listOfMcShapes;
     }
 
+    public void setMcShapesList(ArrayList<McShape> theList)
+    {
+        this.listOfMcShapes = new ArrayList<McShape>();
+        System.out.println("Cleared list");
+        System.out.println(this.listOfMcShapes.size());
+        for (McShape s:listOfMcShapes)
+        {
+            System.out.println("Here for: "+s);
+        }
+        repaint();
+        System.out.println("Adding new items list");
+        this.listOfMcShapes.addAll(theList);
+        System.out.println(this.listOfMcShapes.size());
+        repaint();
+        for (McShape s:listOfMcShapes)
+        {
+            System.out.println(s);
+        }
+    }
+
     //-----------------USED FOR THE shadow SHAPE WHEN DRAWING
 
     //The Shape interface provides a set of methods for describing and inspecting geometric path objects.
