@@ -5,14 +5,12 @@ import com.shapes.Line;
 import com.shapes.Plot;
 import com.shapes.Rectangle;
 import com.shapes.Ellipse;
+import com.shapes.Polygon;
 
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -27,36 +25,37 @@ public class McCanvas extends JComponent
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
     //java.awt.Point[] xCoord, yCoord;  // Arrays to hold the coordinates.
     //public int pointNum = 0;          // Number of points in the arrays.
-    java.awt.Point drawStart, drawEnd, firstPoint;
+    java.awt.Point drawStart, drawEnd;
     Graphics2D graphicSettings;
 
 
     public McCanvas()
     {
+        // Lets the system know the user is currently drawing a shape.
+        // Stores the current X Y co ordinates for use in later drawings.
         this.addMouseListener(new MouseAdapter(){
             @Override
             public void mousePressed(MouseEvent e) {
-                currentlyDrawing = true;
-                Double startX = 0.0, startY = 0.0;
                 System.out.println("Current action: "+currentPaintingAction);
-                if (currentPaintingAction != 5){
-                    drawStart = new Point(e.getX(),e.getY());
-                }
-                if (currentPaintingAction == 5 && drawStart != null){
-                    //do nothing
-                }else{
-                    drawStart = new Point(e.getX(),e.getY());
-                    firstPoint = drawStart;
-                }
+                currentlyDrawing = true;
+                drawStart = new Point(e.getX(),e.getY());
             }
         });
 
         this.addMouseListener(new MouseAdapter() {
             Shape myNewShape = null;
 
+            // When the mouse is released the drawing is complete except for Polygons.
+            // For a normal shape a new object is created and added to the list of shapes.
+            // For a Polygon the system is told that the user is still drawing if there is a currently active Polygon.
+            // After a polygon has been created any mouse release will either add to the existing polygon or finalise the shape.
             @Override
             public void mouseReleased(MouseEvent e) {
                 currentlyDrawing = false;
+                if (currentPaintingAction == 5 && isPolyOpen)
+                {
+                    currentlyDrawing = true;
+                }
                 //TODO: Change this to a switch statement
                 if (currentPaintingAction == 1){
                     McShape myMcPoint = new Plot(drawStart.getX(), drawStart.getY(), edgeColour, getCanvasSize());
@@ -77,27 +76,63 @@ public class McCanvas extends JComponent
                     McShape myMcEllipse = new Ellipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, fillColour, getCanvasSize());
                     listOfMcShapes.add(myMcEllipse);
                 }
+
+                // Get the last polygon added to the list, this is the current polygon being made as it hasnt be closed yet
+                // Make sure its not the first two point as you cant close a zero line polygon
+                // Check to see is the release point is near the beginning of the polygon and if it is, close the polygon
+                // If its not, add another point to the polygon
                 if (currentPaintingAction == 5){
                     drawEnd = new Point(e.getX(),e.getY());
-                    McShape myMcLine = new Line(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY(), edgeColour, getCanvasSize());
-                    listOfMcShapes.add(myMcLine);
+
+                    if (isPolyOpen)
+                    {
+                        Polygon myPoly = (Polygon)listOfMcShapes.get(listOfMcShapes.size()-1);
+                        if (myPoly._xList.size()>2)
+                        {
+                            double x = Math.abs(drawEnd.getX()/getCanvasSize()-myPoly.getFirstX());
+                            double y = Math.abs(drawEnd.getY()/getCanvasSize()-myPoly.getFirstY());
+                            if (x < .1 && y < .1)
+                            {
+                                myPoly.finishPolygon();
+                            }else{
+                                myPoly.addPlot(drawEnd.getX(), drawEnd.getY(), getCanvasSize());
+                            }
+                        }else
+                        {
+                            myPoly.addPlot(drawEnd.getX(), drawEnd.getY(), getCanvasSize());
+                        }
+                        listOfMcShapes.set(listOfMcShapes.size()-1, (McShape)myPoly);
+                    }
                 }
-                //repaint refreshes a number of things, paint being one of them, that is why the method is below
+
+                drawStart = null;
+                drawEnd = null;
                 repaint();
-                if (currentPaintingAction == 5) {
-                    drawStart = drawEnd;
-                    drawEnd = null;
-                    repaint();
-                }else{
-                    drawStart = null;
-                    drawEnd = null;
-                }
             }
         });
 
         this.addMouseMotionListener(new MouseMotionAdapter(){
             @Override
             public void mouseDragged(MouseEvent e){
+                // If the user is currently drawing, has clicked while using draw polygon but not released yet
+                // then a new polygon is created.
+                // If a polygon is currently being drawn then the current mouse position is set to the end point
+                // and the canvas is repainted allowing for the shadow line
+                if (currentlyDrawing){
+                    if (currentPaintingAction == 5)
+                    {
+                        // If the polygon isnt open than a new one has to be created.
+                        // Close occurred when the previous polygon was finalised.
+                        // The new polygon is instantiated and added to the shapes list.
+                        // Additional points are added to the polygon on mouse release.
+                        if (!isPolyOpen)
+                        {
+                            isPolyOpen = true;
+                            McShape myMcPoly = new Polygon(drawStart.getX(), drawStart.getY(), edgeColour, fillColour, getCanvasSize());
+                            listOfMcShapes.add(myMcPoly);
+                        }
+                    }
+                }
                 if (currentlyDrawing){
                     drawEnd = new Point(e.getX(), e.getY());
                     repaint();
@@ -132,6 +167,7 @@ public class McCanvas extends JComponent
         //This draws the temporary shape so you can see where it will be
         if (drawStart != null && drawEnd != null){
             graphicSettings.setPaint(Color.lightGray);
+            graphicSettings.setStroke(new BasicStroke(5));
             Shape myTempShape = null;
 
             if (currentPaintingAction == 1){
@@ -146,11 +182,31 @@ public class McCanvas extends JComponent
             if (currentPaintingAction == 4){
                 myTempShape = drawEllipse(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
             }
+
+            // The shape is cast from the list of shapes as a polygon to give access to its methods
+            // The Polygon object draws itself, a temp line is drawn to show where the new line will be
             if (currentPaintingAction == 5){
-                myTempShape = drawLine(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
+                Polygon tempPoly;
+                Shape currentLine;
+                if (isPolyOpen)
+                {
+                    tempPoly = (Polygon)listOfMcShapes.get(listOfMcShapes.size()-1);
+                    if (tempPoly._xList.size() > 1)
+                    {
+                        currentLine = drawLine(tempPoly.getLastX()*getCanvasSize(), tempPoly.getLastY()*getCanvasSize(), drawEnd.getX(), drawEnd.getY());
+                    }else
+                    {
+                        currentLine = drawLine(drawStart.getX(), drawStart.getY(), drawEnd.getX(), drawEnd.getY());
+                    }
+                    tempPoly.draw(graphicSettings, getCanvasSize());
+                    graphicSettings.draw(currentLine);
+                }
             }
 
-            graphicSettings.draw(myTempShape);
+            // Used for NON polygon shapes
+            if (myTempShape != null){
+                graphicSettings.draw(myTempShape);
+            }
         }
     }
 
@@ -199,4 +255,28 @@ public class McCanvas extends JComponent
 
         return new Ellipse2D.Double(x, y, width, height);
     }
+    //private Path2D.Double drawPoly(McShape s){
+    //    Polygon p = (Polygon)s;
+    //    double[] _xPoly = new double[p._xList.size()];
+    //    int counter = 0;
+    //    for (double d: p._xList)
+    //    {
+    //        _xPoly[counter] = d;
+    //        counter++;
+    //    }
+    //    double[] _yPoly = new double[p._yList.size()];
+    //    counter = 0;
+    //    for (double d: p._yList)
+    //    {
+    //        _yPoly[counter] = d;
+    //        counter++;
+    //    }
+    //    Path2D.Double thePath = new Path2D.Double();
+    //    thePath.moveTo(_xPoly[0],_yPoly[0]);
+    //    for (int i = 1; i < _xPoly.length; i++)
+    //    {
+    //        thePath.lineTo(_xPoly[i],_yPoly[i]);
+    //    }
+    //    return thePath;
+    //}
 }
