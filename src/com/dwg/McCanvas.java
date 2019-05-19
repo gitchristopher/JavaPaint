@@ -91,7 +91,7 @@ public class McCanvas extends JComponent
                         {
                             double x = Math.abs(drawEnd.getX()/getCanvasSize()-myPoly.getFirstX());
                             double y = Math.abs(drawEnd.getY()/getCanvasSize()-myPoly.getFirstY());
-                            if (x < .1 && y < .1)
+                            if (x < .025 && y < .025)
                             {
                                 myPoly.finishPolygon();
                             }else{

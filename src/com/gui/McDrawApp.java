@@ -2,18 +2,16 @@ package com.gui;
 import com.dwg.McCanvas;
 import com.files.VecFile;
 import com.shapes.McShape;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
 
 
 import java.awt.*;
 import javax.swing.JFrame;
 
 import javax.swing.*;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import static com.dwg.McCanvas.*;
 
 public class McDrawApp extends JFrame
 {
@@ -24,7 +22,7 @@ public class McDrawApp extends JFrame
     public static boolean isPolyOpen = false;
     //TODO: rename tf, im not sure what its for
     //UI Elements
-    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnReset, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
+    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnUndo, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
     JTextField tf;
     JPanel easelPanel;
     McCanvas _theCanvas;
@@ -42,7 +40,7 @@ public class McDrawApp extends JFrame
         //Set the default values for the applications GUI
         this.setTitle("McDrawApp - Vector Design Tool");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700, 600);
+        this.setSize(700, 650);
 
         //Top Menu Bar
         //Creating the MenuBar and adding components
@@ -70,40 +68,48 @@ public class McDrawApp extends JFrame
             }
         });
 
-        //Bottom Menu Bar
-        //Creating the panel at bottom and adding components
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // the panel is not visible in output
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
-        btnSelectMarker = MakePaintToolButton(1,"Plot a marker","Click to plot a marker");
-        btnSelectLine = MakePaintToolButton(2,"Draw Lines","Click and drag to draw lines");
-        btnSelectRectangle = MakePaintToolButton(3,"Draw Rectangles","Click and drag to draw rectangles");
-        btnSelectEllipse = MakePaintToolButton(4,"Draw Ellipses","Click and drag to draw Ellipses");
-        btnSelectPolygon = MakePaintToolButton(5,"Draw Polygon","Left click to plot points, click 'Finish Polygon' to complete");
+        //Button Menu Bar
+        //Creating the panel at LEFT side and adding components
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // the panel is not visible in output
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        btnSelectMarker = MakePaintToolButton(1,"","Click to plot a marker");
+        btnSelectLine = MakePaintToolButton(2,"","Click and drag to draw lines");
+        btnSelectRectangle = MakePaintToolButton(3,"","Click and drag to draw rectangles");
+        btnSelectEllipse = MakePaintToolButton(4,"","Click and drag to draw Ellipses");
+        btnSelectPolygon = MakePaintToolButton(5,"","Left click and drag to plot points, click near where you started to auto complete");
         //btnSelectFinPolygon = MakePaintToolButton(6,"Finish Polygon","Click here to connect final line of your polygon");
 
-        btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
-        btnReset = MakeFunctionalButton("Reset","Clears text field",2);
-        btnSelectEdgeColour = MakeFunctionalButton("Edge Colour","Select an edge colour",3);
-        btnSelectFillColour = MakeFunctionalButton("Fill Colour","Select a fill colour",4);
-        btnSaveVec = MakeFunctionalButton("Save File","Save your drawing",5);
+        //btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
+        btnUndo = MakeFunctionalButton("","Undo last shape",2);
+        btnSelectEdgeColour = MakeFunctionalButton("","Select an edge colour",3);
+        btnSelectFillColour = MakeFunctionalButton("","Select a fill colour",4);
+        //btnSaveVec = MakeFunctionalButton("Save File","Save your drawing",5);
 
-        JLabel label = new JLabel("Enter Text");
-        tf = new JTextField(10); // accepts up to 10 characters
+        //JLabel label = new JLabel("Enter Text");
+        //tf = new JTextField(10); // accepts up to 10 characters
 
         //add buttons
-        bottomPanel.add(btnSelectEdgeColour);
-        bottomPanel.add(btnSelectFillColour);
-        bottomPanel.add(btnSelectMarker);
-        bottomPanel.add(btnSelectLine);
-        bottomPanel.add(btnSelectRectangle);
-        bottomPanel.add(btnSelectEllipse);
-        bottomPanel.add(btnSelectPolygon);
-        //bottomPanel.add(btnSelectFinPolygon);
-        bottomPanel.add(label); // Components Added using Flow Layout
-        bottomPanel.add(tf);
-        bottomPanel.add(btnSend);
-        bottomPanel.add(btnReset);
-        bottomPanel.add(btnSaveVec);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectEdgeColour);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectFillColour);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectMarker);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectLine);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectRectangle);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectEllipse);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        buttonPanel.add(btnSelectPolygon);
+        buttonPanel.add(Box.createVerticalStrut(5));
+        //buttonPanel.add(btnSelectFinPolygon);
+        //buttonPanel.add(label); // Components Added using Flow Layout
+        //buttonPanel.add(tf);
+        //buttonPanel.add(btnSend);
+        buttonPanel.add(btnUndo);
+        //buttonPanel.add(btnSaveVec);
         //Align buttons
         btnSelectEdgeColour.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSelectFillColour.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -113,13 +119,42 @@ public class McDrawApp extends JFrame
         btnSelectEllipse.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSelectPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
         //btnSelectFinPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        tf.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSend.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnReset.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSaveVec.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //Size buttons
+        //label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //tf.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //btnSend.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnUndo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //btnSaveVec.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        //TODO Size buttons
         //TODO uniform buttons
+        btnSelectLine.setMinimumSize(new Dimension(80, 60));
+        btnSelectEdgeColour.setMinimumSize(new Dimension(80, 60));
+        btnSelectFillColour.setMinimumSize(new Dimension(80, 60));
+        btnSelectMarker.setMinimumSize(new Dimension(80, 60));
+        //btnSelectMarker.setMaximumSize(new Dimension(80, 60));
+        btnSelectRectangle.setMinimumSize(new Dimension(80, 60));
+        btnSelectEllipse.setMinimumSize(new Dimension(80, 60));
+        btnSelectPolygon.setMinimumSize(new Dimension(80, 60));
+        btnUndo.setMinimumSize(new Dimension(80, 60));
+
+        //Adds Icons to buttons
+        Icon btnLineIcon = new ImageIcon("./Images/PEN.png");
+        btnSelectLine.setIcon(btnLineIcon);
+        Icon btnSwatchIcon = new ImageIcon("./Images/SWATCH.png");
+        btnSelectEdgeColour.setIcon(btnSwatchIcon);
+        Icon btnFillIcon = new ImageIcon("./Images/FILL.png");
+        btnSelectFillColour.setIcon(btnFillIcon);
+        Icon btnMarkerIcon = new ImageIcon("./Images/MARKER.png");
+        btnSelectMarker.setIcon(btnMarkerIcon);
+        Icon btnRecIcon = new ImageIcon("./Images/RECTANGLE.png");
+        btnSelectRectangle.setIcon(btnRecIcon);
+        Icon btnEllipseIcon = new ImageIcon("./Images/ELLIPSE.png");
+        btnSelectEllipse.setIcon(btnEllipseIcon);
+        Icon btnPolygonIcon = new ImageIcon("./Images/POLYGON.png");
+        btnSelectPolygon.setIcon(btnPolygonIcon);
+        Icon btnUndoIcon = new ImageIcon("./Images/UNDO.png");
+        btnUndo.setIcon(btnUndoIcon);
+        
 
 
         //This is the panel which will hold the canvas to be painted on
@@ -134,7 +169,7 @@ public class McDrawApp extends JFrame
 
 
         //Adding Components to the frame.
-        this.add(BorderLayout.WEST, bottomPanel);
+        this.add(BorderLayout.WEST, buttonPanel);
         this.add(BorderLayout.NORTH, menuBar);
         this.add(BorderLayout.CENTER, easelPanel);
         this.setVisible(true);
