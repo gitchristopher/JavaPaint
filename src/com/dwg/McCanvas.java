@@ -94,6 +94,7 @@ public class McCanvas extends JComponent
                             if (x < .025 && y < .025)
                             {
                                 myPoly.finishPolygon();
+                                currentlyDrawing = false; // allows for undo
                             }else{
                                 myPoly.addPlot(drawEnd.getX(), drawEnd.getY(), getCanvasSize());
                             }
@@ -243,6 +244,11 @@ public class McCanvas extends JComponent
         }
     }
 
+    public void removeLastShape()
+    {
+        this.listOfMcShapes.remove(listOfMcShapes.size()-1);
+        repaint();
+    }
     //-----------------USED FOR THE shadow SHAPE WHEN DRAWING
 
     //The Shape interface provides a set of methods for describing and inspecting geometric path objects.

@@ -8,6 +8,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +26,7 @@ public class McDrawApp extends JFrame
     JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnUndo, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
     JTextField tf;
     JPanel easelPanel;
-    McCanvas _theCanvas;
+    public static McCanvas _theCanvas;
     //Default the colours to black and no colour
     public static Color edgeColour = Color.BLACK, fillColour = null;
     public static ArrayList<McShape> LoadedData = new ArrayList<McShape>();
@@ -40,7 +41,7 @@ public class McDrawApp extends JFrame
         //Set the default values for the applications GUI
         this.setTitle("McDrawApp - Vector Design Tool");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700, 650);
+        this.setSize(700, 680);
 
         //Top Menu Bar
         //Creating the MenuBar and adding components
@@ -72,17 +73,17 @@ public class McDrawApp extends JFrame
         //Creating the panel at LEFT side and adding components
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // the panel is not visible in output
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        btnSelectMarker = MakePaintToolButton(1,"","Click to plot a marker");
-        btnSelectLine = MakePaintToolButton(2,"","Click and drag to draw lines");
-        btnSelectRectangle = MakePaintToolButton(3,"","Click and drag to draw rectangles");
-        btnSelectEllipse = MakePaintToolButton(4,"","Click and drag to draw Ellipses");
-        btnSelectPolygon = MakePaintToolButton(5,"","Left click and drag to plot points, click near where you started to auto complete");
+        btnSelectMarker = MakePaintToolButton(1,"","Click to plot a marker", "./Images/MARKER.png");
+        btnSelectLine = MakePaintToolButton(2,"","Click and drag to draw lines", "./Images/PEN.png");
+        btnSelectRectangle = MakePaintToolButton(3,"","Click and drag to draw rectangles", "./Images/RECTANGLE.png");
+        btnSelectEllipse = MakePaintToolButton(4,"","Click and drag to draw Ellipses", "./Images/ELLIPSE.png");
+        btnSelectPolygon = MakePaintToolButton(5,"","Left click and drag to plot points, click near where you started to auto complete", "./Images/POLYGON.png");
         //btnSelectFinPolygon = MakePaintToolButton(6,"Finish Polygon","Click here to connect final line of your polygon");
 
         //btnSend = MakeFunctionalButton("Send","Not currently implemented",1);
-        btnUndo = MakeFunctionalButton("","Undo last shape",2);
-        btnSelectEdgeColour = MakeFunctionalButton("","Select an edge colour",3);
-        btnSelectFillColour = MakeFunctionalButton("","Select a fill colour",4);
+        btnUndo = MakeFunctionalButton("","Undo last shape","./Images/UNDO.png",2);
+        btnSelectEdgeColour = MakeFunctionalButton("","Select an edge colour","./Images/SWATCH.png",3);
+        btnSelectFillColour = MakeFunctionalButton("","Select a fill colour","./Images/FILL.png",4);
         //btnSaveVec = MakeFunctionalButton("Save File","Save your drawing",5);
 
         //JLabel label = new JLabel("Enter Text");
@@ -111,49 +112,49 @@ public class McDrawApp extends JFrame
         buttonPanel.add(btnUndo);
         //buttonPanel.add(btnSaveVec);
         //Align buttons
-        btnSelectEdgeColour.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSelectFillColour.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSelectMarker.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSelectLine.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSelectRectangle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSelectEllipse.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnSelectPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectEdgeColour.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectFillColour.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectMarker.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectLine.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectRectangle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectEllipse.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnSelectPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
         //btnSelectFinPolygon.setAlignmentX(Component.CENTER_ALIGNMENT);
         //label.setAlignmentX(Component.CENTER_ALIGNMENT);
         //tf.setAlignmentX(Component.CENTER_ALIGNMENT);
         //btnSend.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnUndo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ////btnUndo.setAlignmentX(Component.CENTER_ALIGNMENT);
         //btnSaveVec.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         //TODO Size buttons
         //TODO uniform buttons
-        btnSelectLine.setMinimumSize(new Dimension(80, 60));
-        btnSelectEdgeColour.setMinimumSize(new Dimension(80, 60));
-        btnSelectFillColour.setMinimumSize(new Dimension(80, 60));
-        btnSelectMarker.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectLine.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectEdgeColour.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectFillColour.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectMarker.setMinimumSize(new Dimension(80, 60));
         //btnSelectMarker.setMaximumSize(new Dimension(80, 60));
-        btnSelectRectangle.setMinimumSize(new Dimension(80, 60));
-        btnSelectEllipse.setMinimumSize(new Dimension(80, 60));
-        btnSelectPolygon.setMinimumSize(new Dimension(80, 60));
-        btnUndo.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectRectangle.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectEllipse.setMinimumSize(new Dimension(80, 60));
+        ////btnSelectPolygon.setMinimumSize(new Dimension(80, 60));
+        ////btnUndo.setMinimumSize(new Dimension(80, 60));
 
         //Adds Icons to buttons
-        Icon btnLineIcon = new ImageIcon("./Images/PEN.png");
-        btnSelectLine.setIcon(btnLineIcon);
-        Icon btnSwatchIcon = new ImageIcon("./Images/SWATCH.png");
-        btnSelectEdgeColour.setIcon(btnSwatchIcon);
-        Icon btnFillIcon = new ImageIcon("./Images/FILL.png");
-        btnSelectFillColour.setIcon(btnFillIcon);
-        Icon btnMarkerIcon = new ImageIcon("./Images/MARKER.png");
-        btnSelectMarker.setIcon(btnMarkerIcon);
-        Icon btnRecIcon = new ImageIcon("./Images/RECTANGLE.png");
-        btnSelectRectangle.setIcon(btnRecIcon);
-        Icon btnEllipseIcon = new ImageIcon("./Images/ELLIPSE.png");
-        btnSelectEllipse.setIcon(btnEllipseIcon);
-        Icon btnPolygonIcon = new ImageIcon("./Images/POLYGON.png");
-        btnSelectPolygon.setIcon(btnPolygonIcon);
-        Icon btnUndoIcon = new ImageIcon("./Images/UNDO.png");
-        btnUndo.setIcon(btnUndoIcon);
+        ////Icon btnLineIcon = new ImageIcon("./Images/PEN.png");
+        ////btnSelectLine.setIcon(btnLineIcon);
+        ////Icon btnSwatchIcon = new ImageIcon("./Images/SWATCH.png");
+        ////btnSelectEdgeColour.setIcon(btnSwatchIcon);
+        ////Icon btnFillIcon = new ImageIcon("./Images/FILL.png");
+        ////btnSelectFillColour.setIcon(btnFillIcon);
+        ////Icon btnMarkerIcon = new ImageIcon("./Images/MARKER.png");
+        ////btnSelectMarker.setIcon(btnMarkerIcon);
+        ////Icon btnRecIcon = new ImageIcon("./Images/RECTANGLE.png");
+        ////btnSelectRectangle.setIcon(btnRecIcon);
+        ////Icon btnEllipseIcon = new ImageIcon("./Images/ELLIPSE.png");
+        ////btnSelectEllipse.setIcon(btnEllipseIcon);
+        ////Icon btnPolygonIcon = new ImageIcon("./Images/POLYGON.png");
+        ////btnSelectPolygon.setIcon(btnPolygonIcon);
+        ////Icon btnUndoIcon = new ImageIcon("./Images/UNDO.png");
+        ////btnUndo.setIcon(btnUndoIcon);
         
 
 
@@ -167,8 +168,17 @@ public class McDrawApp extends JFrame
         _theCanvas.setLayout(null);
         easelPanel.add(_theCanvas);
 
+        JPanel statusPanel = new JPanel();
+        statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        statusPanel.setPreferredSize(new Dimension(this.getWidth(), 30));
+        statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
+        //TODO add slider instead of label
+        JLabel statusLabel = new JLabel("status");
+        statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        statusPanel.add(statusLabel);
 
         //Adding Components to the frame.
+        this.add(BorderLayout.SOUTH, statusPanel);
         this.add(BorderLayout.WEST, buttonPanel);
         this.add(BorderLayout.NORTH, menuBar);
         this.add(BorderLayout.CENTER, easelPanel);
@@ -177,10 +187,13 @@ public class McDrawApp extends JFrame
 
 
     //METHODS
-    private JButton MakePaintToolButton(final int paintingActionNumber, String buttonText, String buttonToolTip){
+    private JButton MakePaintToolButton(final int paintingActionNumber, String buttonText, String buttonToolTip, String iconLocation){
         JButton myButton = new JButton();
         myButton.setText(buttonText);
         myButton.setToolTipText(buttonToolTip);
+        myButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        myButton.setMinimumSize(new Dimension(80, 60));
+        myButton.setIcon(new ImageIcon(iconLocation));
 
         if (paintingActionNumber >= 0){
             myButton.addActionListener(new ActionListener() {
@@ -198,10 +211,13 @@ public class McDrawApp extends JFrame
     //TODO: Change name of MakeFunctionalButton, im not sure what these buttons are meant to do with the text field
     //Makes a new button adding in the button text and tooltip,
     //the button ID determines what action listener function gets added to the button
-    private JButton MakeFunctionalButton(String buttonText, String buttonToolTip, final int buttonId){
+    private JButton MakeFunctionalButton(String buttonText, String buttonToolTip, String iconLocation,final int buttonId){
         JButton myButton = new JButton();
         myButton.setText(buttonText);
         myButton.setToolTipText(buttonToolTip);
+        myButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        myButton.setMinimumSize(new Dimension(80, 60));
+        myButton.setIcon(new ImageIcon(iconLocation));
 
         switch(buttonId) {
             case 1:
@@ -211,8 +227,14 @@ public class McDrawApp extends JFrame
             case 2:
                 myButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        //clear text from tf //TODO: update the comment once tf has been renamed
-                        tf.setText("");
+                        //Removes the last shape added to the list on the canvas
+                        // Makes sure there is a shape to remove.
+                        // Doesnt allow to undo mid drawing.
+                        if (McDrawApp._theCanvas.listOfMcShapes.size() > 0 && currentlyDrawing == false)
+                        {
+                            McDrawApp._theCanvas.listOfMcShapes.remove(McDrawApp._theCanvas.listOfMcShapes.size()-1);
+                            repaint();
+                        }
                     }
                 });
                 break;
