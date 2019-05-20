@@ -9,10 +9,18 @@ import javax.swing.JFrame;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.undo.UndoManager;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import static com.files.VecFile.OpenFileDlg;
+import static com.files.VecFile.SaveFileDlg;
 
 public class McDrawApp extends JFrame
 {
@@ -36,12 +44,14 @@ public class McDrawApp extends JFrame
         new McDrawApp();
     }
 
+
     public McDrawApp(){
 
         //Set the default values for the applications GUI
         this.setTitle("McDrawApp - Vector Design Tool");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700, 680);
+        this.setSize(700, 678);
+        //this.setMinimumSize(new Dimension(700, 678));
 
         //Top Menu Bar
         //Creating the MenuBar and adding components
@@ -72,6 +82,7 @@ public class McDrawApp extends JFrame
         //Button Menu Bar
         //Creating the panel at LEFT side and adding components
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // the panel is not visible in output
+        buttonPanel.setBackground(Color.decode("#e3e3e3"));
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         btnSelectMarker = MakePaintToolButton(1,"","Click to plot a marker", "./Images/MARKER.png");
         btnSelectLine = MakePaintToolButton(2,"","Click and drag to draw lines", "./Images/PEN.png");
@@ -110,6 +121,10 @@ public class McDrawApp extends JFrame
         //buttonPanel.add(tf);
         //buttonPanel.add(btnSend);
         buttonPanel.add(btnUndo);
+        //This is so the part under the buttons is the same colour as the easel panel
+        JPanel p = new JPanel();
+        p.setBackground(Color.decode("#dcdcdc"));
+        buttonPanel.add(p);
         //buttonPanel.add(btnSaveVec);
         //Align buttons
         ////btnSelectEdgeColour.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -162,26 +177,85 @@ public class McDrawApp extends JFrame
         JPanel easelPanel = new JPanel();
         easelPanel.setLocation(5, 5);
         easelPanel.setSize(500, 500);
-        easelPanel.setBackground(Color.lightGray);
-        easelPanel.setLayout(new BorderLayout());
-        _theCanvas = new McCanvas();
-        _theCanvas.setLayout(null);
-        easelPanel.add(_theCanvas);
+        easelPanel.setBackground(Color.decode("#dcdcdc"));
+        //easelPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        //easelPanel.setLayout(new BorderLayout());
+        easelPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
+        //Scroll bars
+        //final Scrollbar horizontalScroller = new Scrollbar(Scrollbar.HORIZONTAL);
+        //final Scrollbar verticalScroller = new Scrollbar(Scrollbar.VERTICAL);
+        //verticalScroller.setOrientation(Scrollbar.VERTICAL);
+        //horizontalScroller.setOrientation(Scrollbar.HORIZONTAL);
+        //horizontalScroller.setMaximum (1000);
+        //horizontalScroller.setMinimum (1);
+        //verticalScroller.setMaximum (1000);
+        //verticalScroller.setMinimum (1);
+
+
+
+        //Status panel with zoom slider
         JPanel statusPanel = new JPanel();
         statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         statusPanel.setPreferredSize(new Dimension(this.getWidth(), 30));
-        statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
+        //statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
+        statusPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         //TODO add slider instead of label
-        JLabel statusLabel = new JLabel("status");
+        // create a slider
+        JSlider slider = new JSlider(5,800,100);
+        setPreferredSize(new Dimension(300, 30));
+
+        slider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e)
+            {
+                int value = ((JSlider) e.getSource()).getValue();
+                double scale = value / 100.0;
+                //int w = (int) (McDrawApp._theCanvas._width * scale);
+                int h = (int) (McDrawApp._theCanvas._height * scale);
+                Dimension size = new Dimension(h, h);
+                //Dimension size = new Dimension(w, h);
+                McDrawApp._theCanvas.setSize(size); // !!
+                McDrawApp._theCanvas.setPreferredSize(size); // !!
+                McDrawApp._theCanvas.repaint();
+                McDrawApp._theCanvas.invalidate();
+                McDrawApp._theCanvas.revalidate();
+            }
+        }
+        );
+
+
+
+        JLabel statusLabel = new JLabel("Zoom:  ");
+        JLabel zoomRestLabel = new JLabel("Rest");
+        zoomRestLabel.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println("Resetting zoom level");
+                slider.setValue(100);
+            }
+        });
+
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusPanel.add(statusLabel);
+        statusPanel.add(slider);
+        statusPanel.add(zoomRestLabel);
+
+
+        //Actual paint area
+        _theCanvas = new McCanvas(500, 500);
+        _theCanvas.setLayout(null);
+        easelPanel.add(_theCanvas);
+
+        JScrollPane myScrollyPanel = new JScrollPane(easelPanel,
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         //Adding Components to the frame.
         this.add(BorderLayout.SOUTH, statusPanel);
         this.add(BorderLayout.WEST, buttonPanel);
         this.add(BorderLayout.NORTH, menuBar);
-        this.add(BorderLayout.CENTER, easelPanel);
+        this.add(BorderLayout.CENTER, myScrollyPanel);
         this.setVisible(true);
     }
 
@@ -274,39 +348,20 @@ public class McDrawApp extends JFrame
 
 
 
-    public void saveFile(){
-
+    public void saveFile()
+    {
+        System.out.println("McDrawApp->saveFile method: Opening the save file dialogue");
         ArrayList<McShape> tempListOfMcShapes = this._theCanvas.getMcShapesList();
-
-        for (McShape s:tempListOfMcShapes)
-        {
-            System.out.println(s);
-        }
-
-        System.out.println("Save file");
-        VecFile x = new VecFile();
-        x.SaveFileDlg(tempListOfMcShapes);
-
+        SaveFileDlg(tempListOfMcShapes);
     }
-    public void openFile(){
-        //Component c = this.easelPanel.getComponent(0);
-
-        //Canvas can = (Canvas)c;
-        //System.out.println(can);
-        //ArrayList<McShape> tempListOfMcShapes = can.getMcShapesList();
-
-
-        //for (McShape s:tempListOfMcShapes)
-        //{
-        //    System.out.println(s);
-        //}
-        System.out.println("Open file");
-        VecFile x = new VecFile();
-        x.OpenFileDlg();
+    public void openFile()
+    {
+        System.out.println("McDrawApp->openFile method: Opening the open file dialogue");
+        OpenFileDlg();
     }
-    public void paintData(){
-
-
+    public void paintData()
+    {
+        System.out.println("McDrawApp->paintData method: Setting _theCanvas list of shapes to LoadedData list of imported shapes");
         this._theCanvas.setMcShapesList(LoadedData);
     }
 }

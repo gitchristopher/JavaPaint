@@ -36,14 +36,14 @@ public class TestMcCanvas
      */
     @Test
     public void testMcCanvasConstruction(){
-        mcCanvas = new McCanvas();
+        mcCanvas = new McCanvas(500, 500);
     }
     /*Test 2: getCanvasSize
      */
     @Test
     public void testGetCanvasSize(){
 
-        mcCanvas = new McCanvas();
+        mcCanvas = new McCanvas(500, 500);
         this.mcCanvas.setSize(100,100);
         assertEquals(100, mcCanvas.getHeight());
     }

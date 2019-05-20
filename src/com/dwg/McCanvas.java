@@ -21,7 +21,7 @@ import static com.gui.McDrawApp.*;
 
 public class McCanvas extends JComponent
 {
-
+    public int _width, _height;
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
     //java.awt.Point[] xCoord, yCoord;  // Arrays to hold the coordinates.
     //public int pointNum = 0;          // Number of points in the arrays.
@@ -29,8 +29,14 @@ public class McCanvas extends JComponent
     Graphics2D graphicSettings;
 
 
-    public McCanvas()
+    public McCanvas(int width, int height)
     {
+        this._width = width;
+        this._height = height;
+        this.setSize(new Dimension(width, height));
+        this.setPreferredSize(new Dimension(width, height));
+
+
         // Lets the system know the user is currently drawing a shape.
         // Stores the current X Y co ordinates for use in later drawings.
         this.addMouseListener(new MouseAdapter(){
@@ -140,14 +146,14 @@ public class McCanvas extends JComponent
                 }
             }
         });
-        this.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                Component c = (Component)e.getSource();
-                int minSize = Math.min(c.getWidth(), c.getHeight());
-                c.setSize(minSize,minSize);
-            }
-        });
+        //this.addComponentListener(new ComponentAdapter() {
+        //    @Override
+        //    public void componentResized(ComponentEvent e) {
+        //        Component c = (Component)e.getSource();
+        //        int minSize = Math.min(c.getWidth(), c.getHeight());
+        //        c.setSize(minSize,minSize);
+        //    }
+        //});
     }
 
 
