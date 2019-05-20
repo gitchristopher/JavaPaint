@@ -101,6 +101,12 @@ public class McDrawApp extends JFrame
         fileButton.add(openOption);
         fileButton.add(saveOption);
 
+
+        newOption.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                newFile();
+            }
+        });
         openOption.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openFile();
@@ -233,7 +239,7 @@ public class McDrawApp extends JFrame
         statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         statusPanel.setPreferredSize(new Dimension(this.getWidth(), 30));
         //statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
-        statusPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        statusPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         //TODO add slider instead of label
         // create a slider
         JSlider slider = new JSlider(5,800,100);
@@ -359,6 +365,12 @@ public class McDrawApp extends JFrame
                         saveFile();
                     }
                 });
+            case 6:
+                myButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        newFile();
+                    }
+                });
             default:
                 //TODO: do something better for the default switch of the button maker function
                 //code block
@@ -389,6 +401,12 @@ public class McDrawApp extends JFrame
     public void paintData()
     {
         System.out.println("McDrawApp->paintData method: Setting _theCanvas list of shapes to LoadedData list of imported shapes");
+        this._theCanvas.setMcShapesList(LoadedData);
+    }
+    public void newFile()
+    {
+        System.out.println("McDrawApp-> newFile method: Setting empty LoadedData list of shapes, then clear screen");
+        LoadedData.clear();
         this._theCanvas.setMcShapesList(LoadedData);
     }
 

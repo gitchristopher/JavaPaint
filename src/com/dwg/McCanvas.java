@@ -281,6 +281,7 @@ public class McCanvas extends JComponent
         return new Line2D.Double(x, y, x, y);
     }
     private Line2D.Double drawLine(double x1, double y1, double x2, double y2){
+
         return new Line2D.Double(x1, y1, x2, y2);
     }
     private Rectangle2D.Double drawRectangle(double x1, double y1, double x2, double y2){
