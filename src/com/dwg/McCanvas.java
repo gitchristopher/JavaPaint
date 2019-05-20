@@ -1,5 +1,6 @@
 package com.dwg;
 
+import com.gui.McDrawApp;
 import com.shapes.McShape;
 import com.shapes.Line;
 import com.shapes.Plot;
@@ -146,6 +147,20 @@ public class McCanvas extends JComponent
                 }
             }
         });
+
+        InputMap im = this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z,InputEvent.CTRL_DOWN_MASK,false),"Undo");
+
+        ActionMap am = this.getActionMap();
+        am.put("Undo", new AbstractAction()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("My god this was terribly hard to find information on.");
+                removeLastShape();
+            }
+        });
         //this.addComponentListener(new ComponentAdapter() {
         //    @Override
         //    public void componentResized(ComponentEvent e) {
@@ -252,8 +267,11 @@ public class McCanvas extends JComponent
 
     public void removeLastShape()
     {
-        this.listOfMcShapes.remove(listOfMcShapes.size()-1);
-        repaint();
+        if (currentlyDrawing == false && listOfMcShapes.size() > 0)
+        {
+            this.listOfMcShapes.remove(listOfMcShapes.size()-1);
+            repaint();
+        }
     }
     //-----------------USED FOR THE shadow SHAPE WHEN DRAWING
 

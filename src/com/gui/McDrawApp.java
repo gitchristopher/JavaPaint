@@ -11,12 +11,10 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.text.Keymap;
 import javax.swing.undo.UndoManager;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 import static com.files.VecFile.OpenFileDlg;
@@ -38,6 +36,9 @@ public class McDrawApp extends JFrame
     //Default the colours to black and no colour
     public static Color edgeColour = Color.BLACK, fillColour = null;
     public static ArrayList<McShape> LoadedData = new ArrayList<McShape>();
+    private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+
+
 
     public static void main(String [] args)
     {
@@ -53,6 +54,39 @@ public class McDrawApp extends JFrame
         this.setSize(700, 678);
         //this.setMinimumSize(new Dimension(700, 678));
 
+
+
+        this.setFocusable(true);
+
+        //if(this.requestFocus(true))
+        //    System.out.println("requestFocus: true");
+        //this.addKeyListener(new KeyListener()
+        //{
+        //    @Override
+        //    public void keyTyped(KeyEvent e)
+        //    {
+        //        // Not implemented
+        //    }
+//
+        //    @Override
+        //    public void keyPressed(KeyEvent e)
+        //    {
+        //        int keyCode = e.getKeyCode();
+        //        //System.out.println(this);
+        //        if ((e.getKeyCode() == KeyEvent.VK_Z) && ((e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) != 0))
+        //        {
+        //            McDrawApp.this.btnUndo.doClick();
+        //            System.out.println();
+        //            System.out.println("ctrl+z pressed");
+        //        }
+        //    }
+//
+        //    @Override
+        //    public void keyReleased(KeyEvent e)
+        //    {
+        //        // Not implemented
+        //    }
+        //});
         //Top Menu Bar
         //Creating the MenuBar and adding components
         JMenuBar menuBar = new JMenuBar();
@@ -301,14 +335,7 @@ public class McDrawApp extends JFrame
             case 2:
                 myButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        //Removes the last shape added to the list on the canvas
-                        // Makes sure there is a shape to remove.
-                        // Doesnt allow to undo mid drawing.
-                        if (McDrawApp._theCanvas.listOfMcShapes.size() > 0 && currentlyDrawing == false)
-                        {
-                            McDrawApp._theCanvas.listOfMcShapes.remove(McDrawApp._theCanvas.listOfMcShapes.size()-1);
-                            repaint();
-                        }
+                        McDrawApp._theCanvas.removeLastShape();
                     }
                 });
                 break;
@@ -364,4 +391,5 @@ public class McDrawApp extends JFrame
         System.out.println("McDrawApp->paintData method: Setting _theCanvas list of shapes to LoadedData list of imported shapes");
         this._theCanvas.setMcShapesList(LoadedData);
     }
+
 }
