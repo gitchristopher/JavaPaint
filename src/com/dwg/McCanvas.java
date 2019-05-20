@@ -155,6 +155,8 @@ public class McCanvas extends JComponent
     //METHODS
     public void paint(Graphics g) {
         graphicSettings = (Graphics2D)g;
+        graphicSettings.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphicSettings.setStroke(new BasicStroke(1));
         graphicSettings.setColor(edgeColour);
         graphicSettings.setColor(Color.white);
         int size = Math.min(getWidth(), getHeight());

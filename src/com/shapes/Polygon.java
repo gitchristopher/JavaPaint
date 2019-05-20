@@ -147,16 +147,14 @@ public class Polygon extends McShape
             xPolyTemp[i] = this._xList.get(i) * ccs;
             yPolyTemp[i] = this._yList.get(i) * ccs;
         }
-
         Shape s = createPath(xPolyTemp, yPolyTemp);
-
-
 
         if (this._fillColour != null)
         {
             g.setPaint(this._fillColour);
             g.fill(s);
         }
+
         g.setPaint(this._edgeColour);
         g.draw(s);
     }

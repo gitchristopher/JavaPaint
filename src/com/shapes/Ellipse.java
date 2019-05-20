@@ -84,12 +84,14 @@ public class Ellipse extends McShape
     public void draw(Graphics2D g, int currentCanvasSize){
         int ccs = currentCanvasSize;
         Shape s = createEllipse(this._x1*ccs, this._y1*ccs,this._x2*ccs, this._y2*ccs);
-        g.setPaint(this._edgeColour);
-        g.draw(s);
+
         if (this._fillColour != null){
             g.setPaint(this._fillColour);
             g.fill(s);
         }
+
+        g.setPaint(this._edgeColour);
+        g.draw(s);
     }
 
     @Override
