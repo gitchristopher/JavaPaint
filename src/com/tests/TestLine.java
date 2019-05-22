@@ -12,10 +12,10 @@ import java.awt.geom.Line2D;
 public class TestLine
 {
     //Set up helpers
-    double x1;
-    double y1;
-    double x2;
-    double y2;
+    double x1 = 0;
+    double y1 = 0;
+    double x2 = 0;
+    double y2 = 0;
     private Plot _startPoint;
     private Plot _endPoint;
 
@@ -153,7 +153,7 @@ public class TestLine
         Color colour = Color.BLACK;
         int canvasSize = 10;
         line = new Line(x1,y1,x2,y2,colour,canvasSize);
-        assertEquals(canvasSize, 10);
+        assertEquals(10, canvasSize);
     }
     /*Test 9: Test canvasSize resizing
      */
@@ -172,17 +172,16 @@ public class TestLine
     /*Test 10: Test createShape
      */
     @Test
-    public void testPlotCreateShape(){
+    public void testLineCreateShape(){
         x1 = 0.5;
         y1 = 0.5;
-        x2 = 0.7;
-        y2 = 0.7;
+        x2 = 0.5;
+        y2 = 0.5;
         Color colour = Color.BLACK;
         canvasSize = 1;
-        line = new Line(x1,y1,x2,y2,colour,canvasSize);
-        _startPoint = new Plot(x1, y1, colour, canvasSize);
-        Shape s = createShape(this.x1*canvasSize, this.y1*canvasSize,this.x2*canvasSize,this.y2*canvasSize);
-        assertEquals(false, s.contains(x1,y1,x2,y2));
+        line = new Line(x1,y1,x1,y1,colour,canvasSize);
+        Shape s = createShape(this.x1*canvasSize, this.y1*canvasSize,this.x1*canvasSize, this.y1*canvasSize);
+        assertEquals(createShape(0.5,0.5,0.5,0.5), s);
     }
     /*Test 11: Test color
      */
@@ -196,5 +195,46 @@ public class TestLine
         canvasSize = 1;
         line = new Line(x1,y1,x2,y2,colour,canvasSize);
         assertEquals(colour, Color.BLACK);
+    }
+    /*Test 12: Test stringParts
+     *Test for correct string format
+     */
+    @Test
+    public void testLineStringParts(){
+        x1 = 0.5;
+        y1 = 0.5;
+        x2 = 0.7;
+        y2 = 0.7;
+        Color colour = Color.BLACK;
+        canvasSize = 1;
+        line = new Line(x1,y1,x2,y2,colour,canvasSize);
+        assertEquals("LINE 0.5 0.5 0.7 0.7", line.commandExport());
+    }
+    /*Test 13: Test edge colors
+     */
+    @Test
+    public void testLineColors(){
+        x1 = 0.5;
+        y1 = 0.5;
+        x2 = 0.7;
+        y2 = 0.7;
+        Color colour = Color.BLACK;
+        canvasSize = 1;
+        line = new Line(x1,y1,x2,y2,colour,canvasSize);
+        assertEquals(Color.BLACK, line.getEdgeColour());
+    }
+    /*Test 14: Test fill colors
+     *Fill colour will always be null on plot
+     */
+    @Test
+    public void testPlotFillColors(){
+        x1 = 0.5;
+        y1 = 0.5;
+        x2 = 0.7;
+        y2 = 0.7;
+        Color colour = Color.BLACK;
+        canvasSize = 1;
+        line = new Line(x1,y1,x2,y2,colour,canvasSize);
+        assertEquals(null, line.getFillColour());
     }
 }

@@ -54,4 +54,11 @@ public class TestMcCanvas
 
 
     }
+    /*Test 4: makePaintToolButton
+     */
+    @Test
+    public void testMakePaintToolButton(){
+
+
+    }
 }

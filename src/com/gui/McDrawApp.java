@@ -1,6 +1,5 @@
 package com.gui;
 import com.dwg.McCanvas;
-import com.files.VecFile;
 import com.shapes.McShape;
 
 
@@ -11,9 +10,6 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.Keymap;
-import javax.swing.undo.UndoManager;
-import java.awt.Insets;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -30,7 +26,7 @@ public class McDrawApp extends JFrame
     //TODO: rename tf, im not sure what its for
     //UI Elements
     JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnUndo, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
-    JTextField tf;
+    //JTextField tf;
     JPanel easelPanel;
     public static McCanvas _theCanvas;
     //Default the colours to black and no colour

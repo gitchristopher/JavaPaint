@@ -153,7 +153,7 @@ public class TestEllipse
         Color fillColour = Color.WHITE;
         int canvasSize = 10;
         ellipse = new Ellipse(x1,y1,x2,y2,edgeColour,fillColour,canvasSize);
-        assertEquals(canvasSize, 10);
+        assertEquals(10,canvasSize);
     }
     /*Test 9: Test canvasSize resizing
      */
@@ -169,10 +169,10 @@ public class TestEllipse
         ellipse = new Ellipse(x1,y1,x2,y2,edgeColour,fillColour,canvasSize);
         assertEquals(0.005, ellipse.getStartX());
     }
-    /*Test 10: Test createRectangle
+    /*Test 10: Test createEllipse
      */
     @Test
-    public void testEllipseCreateRectangle(){
+    public void testEllipseCreateEllipse(){
         x1 = 0.5;
         y1 = 0.5;
         x2 = 0.7;
@@ -182,6 +182,21 @@ public class TestEllipse
         int canvasSize = 1;
         ellipse = new Ellipse(x1,y1,x2,y2,edgeColour,fillColour,canvasSize);
         Shape s = createEllipse(this.x1*canvasSize, this.y1*canvasSize,this.x2*canvasSize,this.y2*canvasSize);
-        assertEquals(false, s.contains(x1,y1,x2,y2));
+        assertEquals(createEllipse(0.5,0.5,0.7,0.7), s);
+    }
+    /*Test 11: Test stringParts
+     *Test for correct string format
+     */
+    @Test
+    public void testEllipseStringParts() {
+        x1 = 0.5;
+        y1 = 0.5;
+        x2 = 0.7;
+        y2 = 0.7;
+        Color edgeColour = Color.BLACK;
+        Color fillColour = Color.WHITE;
+        int canvasSize = 1;
+        ellipse = new Ellipse(x1,y1,x2,y2,edgeColour,fillColour,canvasSize);
+        assertEquals("ELLIPSE 0.5 0.5 0.7 0.7", ellipse.commandExport());
     }
 }

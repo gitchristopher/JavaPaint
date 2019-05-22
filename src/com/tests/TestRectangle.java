@@ -154,7 +154,7 @@ public class TestRectangle
         Color fillColour = Color.WHITE;
         int canvasSize = 10;
         rectangle = new Rectangle(x1,y1,x2,y2,edgeColour,fillColour,canvasSize);
-        assertEquals(canvasSize, 10);
+        assertEquals(10, canvasSize);
     }
     /*Test 9: Test canvasSize resizing
      */
@@ -183,6 +183,21 @@ public class TestRectangle
         int canvasSize = 1;
         rectangle = new Rectangle(x1,y1,x2,y2,edgeColour,fillColour,canvasSize);
         Shape s = createRectangle(this.x1*canvasSize, this.y1*canvasSize,this.x2*canvasSize,this.y2*canvasSize);
-        assertEquals(false, s.contains(x1,y1,x2,y2));
+        assertEquals(createRectangle(0.5,0.5,0.7,0.7), s);
+    }
+    /*Test 11: Test stringParts
+     *Test for correct string format
+     */
+    @Test
+    public void testRecStringParts() {
+        x1 = 0.5;
+        y1 = 0.5;
+        x2 = 0.7;
+        y2 = 0.7;
+        Color edgeColour = Color.BLACK;
+        Color fillColour = Color.WHITE;
+        int canvasSize = 1;
+        rectangle = new Rectangle(x1, y1, x2, y2, edgeColour, fillColour, canvasSize);
+        assertEquals("RECTANGLE 0.5 0.5 0.7 0.7", rectangle.commandExport());
     }
 }

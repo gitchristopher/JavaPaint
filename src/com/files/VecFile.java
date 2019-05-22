@@ -251,6 +251,10 @@ public class VecFile
         {
             System.out.println("An I/O Error Occurred");
             System.exit(0);
+        }catch (NullPointerException e)
+        {
+            System.out.println("An Null Error Occurred");
+            System.exit(0);
         }finally
         {
             br.close();
