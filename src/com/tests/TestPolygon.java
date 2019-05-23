@@ -24,55 +24,7 @@ public class TestPolygon
     public ArrayList<Double> _yList = new ArrayList<Double>();
     Boolean _isClosed = false;
 
-    private double convertToVector(double PolyNum, int canvasSize)
-    {
-        return PolyNum / canvasSize;
-    }
-    public void addPlot(double xValue, double yValue, int canvasSize)
-    {
-        _xList.add(convertToVector(xValue, canvasSize));
-        _yList.add(convertToVector(yValue, canvasSize));
-    }
 
-    public Path2D.Double createPath(double[] x, double[] y)
-    {
-        Path2D.Double thePath = new Path2D.Double();
-
-        thePath.moveTo(x[0],y[0]);
-        for (int i = 1; i < x.length; i++)
-        {
-            thePath.lineTo(x[i],y[i]);
-        }
-
-        if (_isClosed){thePath.closePath();}
-
-        return thePath;
-    }
-    public void finishPolygon()
-    {
-        this._xPoly = new double[_xList.size()];
-        int counter = 0;
-        for (double d: _xList)
-        {
-            this._xPoly[counter] = d;
-            counter++;
-        }
-        this._yPoly = new double[_yList.size()];
-        counter = 0;
-        for (double d: _yList)
-        {
-            this._yPoly[counter] = d;
-            counter++;
-        }
-        this._isClosed = true;
-        isPolyOpen = false; // variable on McDrawApp
-
-        // Used when developing to see when closed
-        //for (int i = 0; i < this._xPoly.length; i++)
-        //{
-        //    System.out.println("Polygon object: X: " + _xPoly[i] + "\t|\t" + "Y: " + _yPoly[i] );
-        //}
-    }
 
     //Declare Object
     Polygon polygon;
@@ -220,7 +172,7 @@ public class TestPolygon
         }
         Shape s = polygon.createPath(xPolyTemp, yPolyTemp);
 
-        assertEquals(s, s);
+        assertNotNull(s);
     }
     /*Test 11: Test stringParts
      *Test for correct string format
