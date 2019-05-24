@@ -24,6 +24,7 @@ public class McCanvas extends JComponent
 {
     public int _width, _height;
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
+    public ArrayList<McShape> tempPolyList = new ArrayList<McShape>();
     //java.awt.Point[] xCoord, yCoord;  // Arrays to hold the coordinates.
     //public int pointNum = 0;          // Number of points in the arrays.
     java.awt.Point drawStart, drawEnd;
@@ -58,11 +59,21 @@ public class McCanvas extends JComponent
             // After a polygon has been created any mouse release will either add to the existing polygon or finalise the shape.
             @Override
             public void mouseReleased(MouseEvent e) {
-                currentlyDrawing = false;
+
                 if (currentPaintingAction == 5 && isPolyOpen)
                 {
                     currentlyDrawing = true;
-                }
+                }else
+                    {
+                        if (tempPolyList.size()>0)
+                        {
+                            Polygon poly = (Polygon)tempPolyList.get(0);
+                            poly.finishPolygon();
+                            listOfMcShapes.add((McShape)poly);
+                            tempPolyList.clear();
+                        }
+                        currentlyDrawing = false;
+                    }
                 //TODO: Change this to a switch statement
                 if (currentPaintingAction == 1){
                     McShape myMcPoint = new Plot(drawStart.getX(), drawStart.getY(), edgeColour, getCanvasSize());
@@ -93,7 +104,7 @@ public class McCanvas extends JComponent
 
                     if (isPolyOpen)
                     {
-                        Polygon myPoly = (Polygon)listOfMcShapes.get(listOfMcShapes.size()-1);
+                        Polygon myPoly = (Polygon)tempPolyList.get(tempPolyList.size()-1);
                         if (myPoly._xList.size()>2)
                         {
                             double x = Math.abs(drawEnd.getX()/getCanvasSize()-myPoly.getFirstX());
@@ -101,6 +112,8 @@ public class McCanvas extends JComponent
                             if (x < .025 && y < .025)
                             {
                                 myPoly.finishPolygon();
+                                listOfMcShapes.add(tempPolyList.get(0));
+                                tempPolyList.clear();
                                 currentlyDrawing = false; // allows for undo
                             }else{
                                 myPoly.addPlot(drawEnd.getX(), drawEnd.getY(), getCanvasSize());
@@ -109,7 +122,11 @@ public class McCanvas extends JComponent
                         {
                             myPoly.addPlot(drawEnd.getX(), drawEnd.getY(), getCanvasSize());
                         }
-                        listOfMcShapes.set(listOfMcShapes.size()-1, (McShape)myPoly);
+                        if (tempPolyList.size()>0)
+                        {
+                            tempPolyList.set(tempPolyList.size()-1, (McShape)myPoly);
+                        }
+
                     }
                 }
 
@@ -137,7 +154,7 @@ public class McCanvas extends JComponent
                         {
                             isPolyOpen = true;
                             McShape myMcPoly = new Polygon(drawStart.getX(), drawStart.getY(), edgeColour, fillColour, getCanvasSize());
-                            listOfMcShapes.add(myMcPoly);
+                            tempPolyList.add(myMcPoly);
                         }
                     }
                 }
@@ -187,6 +204,9 @@ public class McCanvas extends JComponent
         for (McShape s : listOfMcShapes){
             s.draw(graphicSettings, this.getHeight());
         }
+        for (McShape s : tempPolyList){
+            s.draw(graphicSettings, this.getHeight());
+        }
 
         //This draws the temporary shape so you can see where it will be
         if (drawStart != null && drawEnd != null){
@@ -214,7 +234,7 @@ public class McCanvas extends JComponent
                 Shape currentLine;
                 if (isPolyOpen)
                 {
-                    tempPoly = (Polygon)listOfMcShapes.get(listOfMcShapes.size()-1);
+                    tempPoly = (Polygon)tempPolyList.get(tempPolyList.size()-1);
                     if (tempPoly._xList.size() > 1)
                     {
                         currentLine = drawLine(tempPoly.getLastX()*getCanvasSize(), tempPoly.getLastY()*getCanvasSize(), drawEnd.getX(), drawEnd.getY());

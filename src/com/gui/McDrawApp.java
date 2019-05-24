@@ -47,8 +47,8 @@ public class McDrawApp extends JFrame
         //Set the default values for the applications GUI
         this.setTitle("McDrawApp - Vector Design Tool");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700, 678);
-        //this.setMinimumSize(new Dimension(700, 678));
+        this.setSize(700, 700);
+        this.setMinimumSize(new Dimension(640, 740));
 
 
 
