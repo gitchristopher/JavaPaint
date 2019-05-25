@@ -23,7 +23,7 @@ public class VecFile
 
     }
 
-    public static void OpenFileDlg()
+    public static boolean OpenFileDlg()
     {
         System.out.println("The file open method ran");
         JFileChooser jFileChooser = new JFileChooser();
@@ -37,6 +37,9 @@ public class VecFile
             File selectedFile = jFileChooser.getSelectedFile();
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
             OpenFile(selectedFile);
+            return true;
+        }else{
+            return false;
         }
     }
     public static void SaveFileDlg(ArrayList<McShape> McShapeList)

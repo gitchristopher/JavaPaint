@@ -40,11 +40,10 @@ public class McDrawApp extends JFrame
     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 
     // The canvas drawn on by the user
-    public static McCanvas _theCanvas;
+    private static McCanvas _theCanvas;
 
     //UI Elements
-    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnSelectFinPolygon, btnSend, btnUndo, btnSelectEdgeColour, btnSelectFillColour, btnSaveVec;
-    JPanel easelPanel;
+    JButton btnSelectMarker, btnSelectLine, btnSelectRectangle, btnSelectEllipse, btnSelectPolygon, btnUndo, btnSelectEdgeColour, btnSelectFillColour;
 
 
     /**
@@ -90,7 +89,6 @@ public class McDrawApp extends JFrame
         openOption.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openFile();
-                sendDataToCanvas();
             }
         });
         saveOption.addActionListener(new ActionListener() {
@@ -312,7 +310,7 @@ public class McDrawApp extends JFrame
     /**
      * Open the save file dialogue filtered to the VEC file format while passing the list of shapes
      */
-    public void saveFile()
+    private void saveFile()
     {
         ArrayList<McShape> tempListOfMcShapes = this._theCanvas.getMcShapesList();
         SaveFileDlg(tempListOfMcShapes);
@@ -321,26 +319,35 @@ public class McDrawApp extends JFrame
     /**
      * Opens the open file dialogue filtered to the VEC file format
      */
-    public void openFile()
+    private void openFile()
     {
-        OpenFileDlg();
+        boolean opened = OpenFileDlg();
+        if (opened)
+        {
+            newFile();
+            sendDataToCanvas();
+        }
     }
 
     /**
      * Sends data that was just loaded, using the openFile function, to the canvas
      */
-    public void sendDataToCanvas()
+    private void sendDataToCanvas()
     {
         this._theCanvas.setMcShapesList(LoadedData);
+        LoadedData.clear();
     }
 
     /**
      * Clears the canvas of all shapes
      */
-    public void newFile()
+    private void newFile()
     {
-        LoadedData.clear();
-        this._theCanvas.setMcShapesList(LoadedData);
+        _theCanvas.resetCanvas();
+        edgeColour = Color.BLACK;
+        fillColour = null;
+        isPolyOpen = false;
+        currentlyDrawing = false;
     }
 
 }
