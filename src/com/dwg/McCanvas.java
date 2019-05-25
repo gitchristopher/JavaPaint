@@ -1,6 +1,6 @@
 package com.dwg;
 
-import com.gui.McDrawApp;
+import com.shapes.*;
 import com.shapes.McShape;
 import com.shapes.Line;
 import com.shapes.Plot;
@@ -22,6 +22,7 @@ import static com.gui.McDrawApp.*;
 
 public class McCanvas extends JComponent
 {
+    // The initial height and width of the canvas
     public int _width, _height;
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
     public ArrayList<McShape> tempPolyList = new ArrayList<McShape>();
@@ -255,7 +256,18 @@ public class McCanvas extends JComponent
     }
 
 
-
+    public void zoom(int zoomValue)
+    {
+        double scale = zoomValue / 100.0;
+        int h = (int)(this._height * scale);
+        Dimension size = new Dimension(h, h);
+        System.out.println(h + " " + scale);
+        this.setSize(size);
+        this.setPreferredSize(size);
+        this.repaint();
+        this.invalidate();
+        this.revalidate();
+    }
 
     private int getCanvasSize(){
         return this.getHeight();

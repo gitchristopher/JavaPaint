@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89a72989-ada3-4329-be84-a30c84b6e52f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CAB302Assignment2/META-INF/CAB302Assignment2.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/dwg/McCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/dwg/McCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gui/McDrawApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gui/McDrawApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testsave.vec" beforeDir="false" afterPath="$PROJECT_DIR$/testsave.vec" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,79 +20,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/gui/McDrawApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2788">
-              <caret line="24" column="36" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="36" />
+            <state relative-caret-position="9288">
+              <caret line="344" lean-forward="true" selection-start-line="344" selection-end-line="344" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11694#11910#0" expanded="true" />
-                <element signature="e#11909#11910#0" expanded="true" />
+                <element signature="e#1041#1050#0" expanded="true" />
+                <element signature="e#1735#1736#0" expanded="true" />
+                <element signature="e#1766#1767#0" expanded="true" />
+                <element signature="e#2865#2866#0" expanded="true" />
+                <element signature="e#2906#2907#0" expanded="true" />
+                <element signature="e#3242#3243#0" expanded="true" />
+                <element signature="e#3284#3285#0" expanded="true" />
+                <element signature="e#6494#6495#0" expanded="true" />
+                <element signature="e#6589#6590#0" expanded="true" />
+                <element signature="e#6774#6930#0" expanded="true" />
+                <element signature="e#6929#6930#0" expanded="true" />
+                <element signature="e#8880#8881#0" expanded="true" />
+                <element signature="e#8964#8965#0" expanded="true" />
+                <element signature="e#10401#10402#0" expanded="true" />
+                <element signature="e#10487#10488#0" expanded="true" />
+                <element signature="e#11406#11407#0" expanded="true" />
+                <element signature="e#11464#11465#0" expanded="true" />
+                <element signature="e#11654#11655#0" expanded="true" />
+                <element signature="e#11711#11712#0" expanded="true" />
+                <element signature="e#11901#11902#0" expanded="true" />
+                <element signature="e#11958#11959#0" expanded="true" />
+                <element signature="e#12248#12249#0" expanded="true" />
+                <element signature="e#12292#12293#0" expanded="true" />
+                <element signature="e#12913#12914#0" expanded="true" />
+                <element signature="e#12942#12943#0" expanded="true" />
+                <element signature="e#12993#12994#0" expanded="true" />
+                <element signature="e#13052#13053#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/files/VecFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5315">
-              <caret line="30" column="68" lean-forward="true" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+            <state relative-caret-position="413">
+              <caret line="267" column="26" lean-forward="true" selection-start-line="267" selection-start-column="26" selection-end-line="267" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11012#11013#0" expanded="true" />
-                <element signature="e#11051#11052#0" expanded="true" />
-                <element signature="e#11101#11102#0" expanded="true" />
-                <element signature="e#11143#11144#0" expanded="true" />
-                <element signature="e#12298#12299#0" expanded="true" />
-                <element signature="e#12350#12351#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/shapes/Rectangle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1152">
-              <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1224#1225#0" expanded="true" />
-                <element signature="e#1250#1251#0" expanded="true" />
-                <element signature="e#1282#1283#0" expanded="true" />
-                <element signature="e#1308#1309#0" expanded="true" />
-                <element signature="e#1338#1339#0" expanded="true" />
-                <element signature="e#1364#1365#0" expanded="true" />
-                <element signature="e#1394#1395#0" expanded="true" />
-                <element signature="e#1420#1421#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/shapes/Polygon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="83" column="18" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1740#1741#0" expanded="true" />
-                <element signature="e#1776#1777#0" expanded="true" />
+                <element signature="e#11593#11594#0" expanded="true" />
+                <element signature="e#11632#11633#0" expanded="true" />
+                <element signature="e#11682#11683#0" expanded="true" />
+                <element signature="e#11724#11725#0" expanded="true" />
+                <element signature="e#12879#12880#0" expanded="true" />
+                <element signature="e#12931#12932#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,6 +111,10 @@
       <find>imported</find>
       <find>temppol</find>
       <find>isPolyOpen</find>
+      <find>paintData</find>
+      <find>_height =</find>
+      <find>getHeight</find>
+      <find>syste</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,12 +152,12 @@
         <option value="$PROJECT_DIR$/src/com/tests/TestVecFile.java" />
         <option value="$PROJECT_DIR$/src/com/tests/TestVecFileFilter.java" />
         <option value="$PROJECT_DIR$/src/com/tests/TestMcCanvas.java" />
-        <option value="$PROJECT_DIR$/src/com/gui/McDrawApp.java" />
         <option value="$PROJECT_DIR$/src/com/dwg/McCanvas.java" />
+        <option value="$PROJECT_DIR$/src/com/gui/McDrawApp.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="width" value="975" />
     <option name="height" value="1047" />
@@ -188,8 +167,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -262,6 +239,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,11 +347,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.McDrawApp" />
       <item itemvalue="JUnit.TestVecFileFilter.testVecFileFilterAccept" />
       <item itemvalue="JUnit.TestVecFileFilter.testVecFileFilterAcceptFalse" />
       <item itemvalue="JUnit.TestVecFileFilter.testVecFileFilterGetDescription" />
       <item itemvalue="JUnit.com.tests in CAB302Assignment2" />
-      <item itemvalue="Application.McDrawApp" />
     </list>
     <recent_temporary>
       <list>
@@ -442,7 +421,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13166311" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13272922" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -450,8 +429,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3287841" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.09967497" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28060672" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995037" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -459,7 +438,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32630274" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3261105" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -620,22 +599,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tests/TestVecFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/tests/TestVecFileFilter.java" />
     <entry file="file://$PROJECT_DIR$/src/com/tests/TestLine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="183" column="25" selection-start-line="183" selection-start-column="25" selection-end-line="183" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tests/TestMcCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -686,9 +653,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/files/VecFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/shapes/Rectangle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1152">
+        <state relative-caret-position="1107">
           <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -704,31 +681,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gui/McDrawApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2788">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11694#11910#0" expanded="true" />
-            <element signature="e#11909#11910#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/files/VecFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5315">
-          <caret line="30" column="68" lean-forward="true" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/shapes/Polygon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
+        <state relative-caret-position="1890">
           <caret line="83" column="18" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -738,18 +693,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tests/TestMcCanvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+        <state relative-caret-position="723">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11012#11013#0" expanded="true" />
-            <element signature="e#11051#11052#0" expanded="true" />
-            <element signature="e#11101#11102#0" expanded="true" />
-            <element signature="e#11143#11144#0" expanded="true" />
-            <element signature="e#12298#12299#0" expanded="true" />
-            <element signature="e#12350#12351#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tests/TestVecFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tests/TestVecFileFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dwg/McCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="267" column="26" lean-forward="true" selection-start-line="267" selection-start-column="26" selection-end-line="267" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11593#11594#0" expanded="true" />
+            <element signature="e#11632#11633#0" expanded="true" />
+            <element signature="e#11682#11683#0" expanded="true" />
+            <element signature="e#11724#11725#0" expanded="true" />
+            <element signature="e#12879#12880#0" expanded="true" />
+            <element signature="e#12931#12932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gui/McDrawApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9288">
+          <caret line="344" lean-forward="true" selection-start-line="344" selection-end-line="344" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1041#1050#0" expanded="true" />
+            <element signature="e#1735#1736#0" expanded="true" />
+            <element signature="e#1766#1767#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#3242#3243#0" expanded="true" />
+            <element signature="e#3284#3285#0" expanded="true" />
+            <element signature="e#6494#6495#0" expanded="true" />
+            <element signature="e#6589#6590#0" expanded="true" />
+            <element signature="e#6774#6930#0" expanded="true" />
+            <element signature="e#6929#6930#0" expanded="true" />
+            <element signature="e#8880#8881#0" expanded="true" />
+            <element signature="e#8964#8965#0" expanded="true" />
+            <element signature="e#10401#10402#0" expanded="true" />
+            <element signature="e#10487#10488#0" expanded="true" />
+            <element signature="e#11406#11407#0" expanded="true" />
+            <element signature="e#11464#11465#0" expanded="true" />
+            <element signature="e#11654#11655#0" expanded="true" />
+            <element signature="e#11711#11712#0" expanded="true" />
+            <element signature="e#11901#11902#0" expanded="true" />
+            <element signature="e#11958#11959#0" expanded="true" />
+            <element signature="e#12248#12249#0" expanded="true" />
+            <element signature="e#12292#12293#0" expanded="true" />
+            <element signature="e#12913#12914#0" expanded="true" />
+            <element signature="e#12942#12943#0" expanded="true" />
+            <element signature="e#12993#12994#0" expanded="true" />
+            <element signature="e#13052#13053#0" expanded="true" />
           </folding>
         </state>
       </provider>
