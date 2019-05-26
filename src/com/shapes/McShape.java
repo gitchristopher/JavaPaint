@@ -77,7 +77,7 @@ public abstract class McShape {
 
     /**
      * Draws the given shape to the screen
-     * @param g
+     * @param g the current {@code Graphics2D} context
      * @param currentCanvasSize the canvas size is used to calculate shape size
      */
     public abstract void draw(Graphics2D g, int currentCanvasSize);
@@ -87,4 +87,5 @@ public abstract class McShape {
      * @return a string representing the data for a given shape
      */
     public abstract String commandExport();
+    //TODO: change printed statements to have [] like the assignment sheet????
 }

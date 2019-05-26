@@ -30,7 +30,6 @@ public class Line extends McShape
     public Line(double x1, double y1, double x2, double y2, Color colour, int canvasSize)
     {
         super(colour);
-        //this._edgeColour = colour;
         this._startPoint = new Plot(x1, y1, colour, canvasSize);
         this._endPoint = new Plot(x2, y2, colour, canvasSize);
     }
@@ -89,8 +88,8 @@ public class Line extends McShape
     }
 
     /**
-     *
-     * @param g
+     * Draws the custom shapes edge using the settings of the current {@code Graphics2D} object
+     * @param g the current {@code Graphics2D} context
      * @param currentCanvasSize the canvas size is used to calculate shape size
      */
     @Override
@@ -102,8 +101,8 @@ public class Line extends McShape
     }
 
     /**
-     *
-     * @return
+     * Constructs a string representing the object and its encapsulated values
+     * @return a string representing the object
      */
     @Override
     public String commandExport()
@@ -115,6 +114,5 @@ public class Line extends McShape
         String y2 = decimalFormat.format(getEndPlot().getY());
 
         return "LINE "+x1+" "+y1+" "+x2+" "+y2;
-        //return "LINE "+getStartPlot().getX()+" "+getStartPlot().getY()+" "+getEndPlot().getX()+" "+getEndPlot().getY();
     }
 }

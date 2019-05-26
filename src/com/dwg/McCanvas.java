@@ -287,7 +287,6 @@ public class McCanvas extends JComponent
         double scale = zoomValue / 100.0;
         int h = (int)(this._height * scale);
         Dimension size = new Dimension(h, h);
-        System.out.println(h + " " + scale);
         this.setSize(size);
         this.setPreferredSize(size);
         this.repaint();
