@@ -1,6 +1,5 @@
 package com.files;
 
-import com.dwg.McCanvas;
 import com.gui.McDrawApp;
 import com.shapes.*;
 import com.shapes.Polygon;
@@ -12,20 +11,27 @@ import java.io.*;
 import java.util.ArrayList;
 import java.io.File;
 import java.util.List;
-import javax.swing.filechooser.*;
-import javax.swing.filechooser.FileFilter;
 
+/**
+ * A custom file format for storing information about a drawing made in the McDrawApp painting application
+ */
 public class VecFile
 {
 
+    /**
+     * Constructs a new object to give access to the classes methods
+     */
     public VecFile()
     {
 
     }
 
+    /**
+     * Opens the open file dialogue for the user to choose a file to open
+     * @return false if the user desided to not open any file
+     */
     public static boolean OpenFileDlg()
     {
-        System.out.println("The file open method ran");
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
         jFileChooser.addChoosableFileFilter(new VecFileFilter("vec","Vec Images (*.vec)"));
@@ -35,16 +41,19 @@ public class VecFile
 
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = jFileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
             OpenFile(selectedFile);
             return true;
         }else{
             return false;
         }
     }
+
+    /**
+     * Opens the save dialogue so the user can save the painting
+     * @param McShapeList a list of shapes drawn to the canvas
+     */
     public static void SaveFileDlg(ArrayList<McShape> McShapeList)
     {
-        System.out.println("The file save method ran");
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
         jFileChooser.addChoosableFileFilter(new VecFileFilter("vec","Vec Images (*.vec)"));
@@ -59,6 +68,10 @@ public class VecFile
         }
     }
 
+    /**
+     * Opens the VEC file and reads in the data
+     * @param selectedFile the file which the user want to open
+     */
     private static void OpenFile(File selectedFile)
     {
 
@@ -76,9 +89,13 @@ public class VecFile
         }
     }
 
+    /**
+     * Saves the shape data to a VEC file
+     * @param McShapeList the list of shapes to save int he VEC file
+     * @param aNewFile the new file to create when saving
+     */
     private static void SaveFile(ArrayList<McShape> McShapeList, File aNewFile)
     {
-        System.out.println("Selected file: " + aNewFile.getAbsolutePath());
         try
         {
             PrintWriter infoToWrite = new PrintWriter( new BufferedWriter( new FileWriter(aNewFile)));
@@ -90,6 +107,11 @@ public class VecFile
         }
     }
 
+    /**
+     * Writes the shape data to a file, called while saving
+     * @param McShapeList the list of shapes to save in the VEC file
+     * @param infoToWrite a PrintWriter used to write the data to the file
+     */
     private static void WriteData(ArrayList<McShape> McShapeList, PrintWriter infoToWrite)
     {
         List<String> commandList = new ArrayList<>();
@@ -162,6 +184,11 @@ public class VecFile
         infoToWrite.close();
     }
 
+    /**
+     * Loads the data from the selected file into the application
+     * @param br the reader used to read in the data
+     * @throws IOException occurs when there is an error reading the file
+     */
     private static void LoadData(BufferedReader br) throws IOException
     {
         ArrayList<McShape> importListOfMcShapes = new ArrayList<McShape>();
@@ -171,9 +198,7 @@ public class VecFile
             Color edge = Color.BLACK;
             Color fill = null;
 
-
             String singleCommand = br.readLine();
-
             while (singleCommand != null) {
 
                 // Separate the first word (the command) from the values after it
@@ -243,13 +268,9 @@ public class VecFile
                         // code block
                 }
 
-
-
-
                 // Get the next line of the saved document
                 singleCommand = br.readLine();
             }
-
         }catch (IOException e)
         {
             System.out.println("An I/O Error Occurred");
