@@ -9,28 +9,23 @@ import static com.gui.McDrawApp.isPolyOpen;
 
 public class Polygon extends McShape
 {
-    double[] _xPoly;// = new double[]{};
-    double[] _yPoly;// = new double[]{};
-    Color _edgeColour;
-    Color _fillColour;
+    double[] _xPoly;
+    double[] _yPoly;
     public ArrayList<Double> _xList = new ArrayList<Double>();
     public ArrayList<Double> _yList = new ArrayList<Double>();
     Boolean _isClosed = false;
 
     public Polygon(double XPoly, double YPoly, Color edge, Color fill, int canvasSize)
     {
+        super(edge, fill);
         _xList.add(convertToVector(XPoly, canvasSize));
         _yList.add(convertToVector(YPoly, canvasSize));
-        _edgeColour = edge;
-        _fillColour = fill;
     }
 
     //CONSTRUCTOR used when loading data from a file
     public Polygon(String values, Color edgecolour, Color fillcolour)
     {
-        System.out.println(values);
-        this._edgeColour = edgecolour;
-        this._fillColour = fillcolour;
+        super(edgecolour, fillcolour);
 
         String[] parts = values.split("\\s");
         for (int i = 0; i < parts.length; i++)
@@ -82,22 +77,6 @@ public class Polygon extends McShape
         }
         this._isClosed = true;
         isPolyOpen = false; // variable on McDrawApp
-
-        // Used when developing to see when closed
-        //for (int i = 0; i < this._xPoly.length; i++)
-        //{
-        //    System.out.println("Polygon object: X: " + _xPoly[i] + "\t|\t" + "Y: " + _yPoly[i] );
-        //}
-    }
-
-    private double[] convertArrayToVector(double[] PolyArray, int canvasSize)
-    {
-        double[] temp = new double[]{};
-        for (int i = 0; i < PolyArray.length; i++)
-        {
-            temp[i] = PolyArray[i]/canvasSize;
-        }
-        return temp;
     }
 
     public Path2D.Double createPath(double[] x, double[] y)
@@ -115,17 +94,6 @@ public class Polygon extends McShape
         return thePath;
     }
 
-    @Override
-    public Color getEdgeColour()
-    {
-        return this._edgeColour;
-    }
-
-    @Override
-    public Color getFillColour()
-    {
-        return this._fillColour;
-    }
 
     @Override
     public void draw(Graphics2D g, int currentCanvasSize)
@@ -134,22 +102,21 @@ public class Polygon extends McShape
         int ccs = currentCanvasSize;
         double[] xPolyTemp = new double[this._xList.size()];
         double[] yPolyTemp = new double[this._yList.size()];
-        //System.out.println(this._xList.size());
+
         for (int i = 0; i < this._xList.size(); i++)
         {
-            //System.out.println(i);
             xPolyTemp[i] = this._xList.get(i) * ccs;
             yPolyTemp[i] = this._yList.get(i) * ccs;
         }
         Shape s = createPath(xPolyTemp, yPolyTemp);
 
-        if (this._fillColour != null)
+        if (getFillColour() != null)
         {
-            g.setPaint(this._fillColour);
+            g.setPaint(getFillColour());
             g.fill(s);
         }
 
-        g.setPaint(this._edgeColour);
+        g.setPaint(getEdgeColour());
         g.draw(s);
     }
 

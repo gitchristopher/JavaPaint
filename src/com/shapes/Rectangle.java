@@ -7,17 +7,14 @@ import java.text.DecimalFormat;
 public class Rectangle extends McShape
 {
     //VARIABLES
-    private Color _edgeColour;
-    private Color _fillColour;
     private double _x1;
     private double _y1;
     private double _x2;
     private double _y2;
     //CONSTRUCTOR
-    public Rectangle(double x1, double y1, double x2, double y2, Color edge, Color fill, int canvasSize){
-
-        this._edgeColour = edge;
-        this._fillColour = fill;
+    public Rectangle(double x1, double y1, double x2, double y2, Color edge, Color fill, int canvasSize)
+    {
+        super(edge,fill);
         this._x1 = convertToVector(x1, canvasSize);
         this._y1 = convertToVector(y1, canvasSize);
         this._x2 = convertToVector(x2, canvasSize);
@@ -27,9 +24,7 @@ public class Rectangle extends McShape
     //CONSTRUCTOR used when loading data from a file
     public Rectangle(String values, Color edgecolour, Color fillcolour)
     {
-        this._edgeColour = edgecolour;
-        this._fillColour = fillcolour;
-
+        super(edgecolour,fillcolour);
         String[] parts = values.split(" ");
         _x1 = Double.parseDouble(parts[0]);
         _y1 = Double.parseDouble(parts[1]);
@@ -54,18 +49,6 @@ public class Rectangle extends McShape
         return _y2;
     }
 
-    @Override
-    public Color getEdgeColour()
-    {
-        return this._edgeColour;
-    }
-
-    @Override
-    public Color getFillColour()
-    {
-        return this._fillColour;
-    }
-
     //METHODS
 
     private Rectangle2D.Double createRectangle(double x1, double y1, double x2, double y2){
@@ -86,12 +69,12 @@ public class Rectangle extends McShape
         int ccs = currentCanvasSize;
         Shape s = createRectangle(this._x1*ccs, this._y1*ccs,this._x2*ccs, this._y2*ccs);
 
-        if (this._fillColour != null){
-            g.setPaint(this._fillColour);
+        if (getFillColour() != null){
+            g.setPaint(getFillColour());
             g.fill(s);
         }
 
-        g.setPaint(this._edgeColour);
+        g.setPaint(getEdgeColour());
         g.draw(s);
     }
 

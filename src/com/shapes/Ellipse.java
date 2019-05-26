@@ -13,8 +13,6 @@ import java.text.DecimalFormat;
 public class Ellipse extends McShape
 {
     //VARIABLES
-    private Color _edgeColour;
-    private Color _fillColour;
     private double _x1;
     private double _y1;
     private double _x2;
@@ -34,9 +32,7 @@ public class Ellipse extends McShape
      * @param canvasSize The current size of the canvas
      */
     public Ellipse(double x1, double y1, double x2, double y2, Color edge, Color fill, int canvasSize){
-
-        this._edgeColour = edge;
-        this._fillColour = fill;
+        super(edge, fill);
         this._x1 = convertToVector(x1, canvasSize);
         this._y1 = convertToVector(y1, canvasSize);
         this._x2 = convertToVector(x2, canvasSize);
@@ -52,9 +48,9 @@ public class Ellipse extends McShape
      */
     public Ellipse(String values, Color edgecolour, Color fillcolour)
     {
-        this._edgeColour = edgecolour;
-        this._fillColour = fillcolour;
-
+        super(edgecolour, fillcolour);
+        setEdgeColour(edgecolour);
+        setFillColour(fillcolour);
         String[] parts = values.split(" ");
         _x1 = Double.parseDouble(parts[0]);
         _y1 = Double.parseDouble(parts[1]);
@@ -96,28 +92,6 @@ public class Ellipse extends McShape
         return _y2;
     }
 
-
-    /**
-     * Gets the current edge colour of the {@code Ellipse}
-     * @return an {@code java.awt.Color} object for the shapes edge
-     */
-    @Override
-    public Color getEdgeColour()
-    {
-        return this._edgeColour;
-    }
-
-    /**
-     * Gets the current fill colour of the {@code Ellipse}
-     * @return an {@code java.awt.Color} object for the shapes fill, null if no fill set
-     */
-    @Override
-    public Color getFillColour()
-    {
-        return this._fillColour;
-    }
-
-
     //METHODS
 
     /**
@@ -152,12 +126,12 @@ public class Ellipse extends McShape
         int ccs = currentCanvasSize;
         Shape s = createEllipse(this._x1*ccs, this._y1*ccs,this._x2*ccs, this._y2*ccs);
 
-        if (this._fillColour != null){
-            g.setPaint(this._fillColour);
+        if (this.getFillColour() != null){
+            g.setPaint(this.getFillColour());
             g.fill(s);
         }
 
-        g.setPaint(this._edgeColour);
+        g.setPaint(this.getEdgeColour());
         g.draw(s);
     }
 

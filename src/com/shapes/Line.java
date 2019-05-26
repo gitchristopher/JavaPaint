@@ -13,8 +13,6 @@ import java.text.DecimalFormat;
 public class Line extends McShape
 {
     //VARIABLES
-    private Color _edgeColour;
-    private Color _fillColour;
     private Plot _startPoint;
     private Plot _endPoint;
 
@@ -31,14 +29,15 @@ public class Line extends McShape
      */
     public Line(double x1, double y1, double x2, double y2, Color colour, int canvasSize)
     {
-        this._edgeColour = colour;
+        super(colour);
+        //this._edgeColour = colour;
         this._startPoint = new Plot(x1, y1, colour, canvasSize);
         this._endPoint = new Plot(x2, y2, colour, canvasSize);
     }
 
     //CONSTRUCTOR used when loading data from a file
 
-    //TODO: Remove fill colour from a LINE and the PLOT classes(load file ramifications)
+    //TODO: Remove fill colour from a LINE and the PLOT classes(load file ramifications?)
     /**
      * Constructs and initialises a Line from a saved file with the specified values and colour.
      * @param values A string of two XY coordinates describing the beginning and end of the Line
@@ -47,7 +46,7 @@ public class Line extends McShape
      */
     public Line(String values, Color edgecolour, Color fillcolour)
     {
-        this._edgeColour = edgecolour;
+        super(edgecolour);
         String[] parts = values.split(" ");
         String sp = parts[0] + " " + parts[1];
         String ep = parts[2] + " " + parts[3];
@@ -91,26 +90,6 @@ public class Line extends McShape
 
     /**
      *
-     * @return
-     */
-    @Override
-    public Color getEdgeColour()
-    {
-        return this._edgeColour;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public Color getFillColour()
-    {
-        return this._fillColour;
-    }
-
-    /**
-     *
      * @param g
      * @param currentCanvasSize the canvas size is used to calculate shape size
      */
@@ -118,7 +97,7 @@ public class Line extends McShape
     public void draw(Graphics2D g, int currentCanvasSize) {
         int ccs = currentCanvasSize;
         Shape s = createShape(this._startPoint.getX()*ccs, this._startPoint.getY()*ccs,this._endPoint.getX()*ccs, this._endPoint.getY()*ccs);
-        g.setPaint(this._edgeColour);
+        g.setPaint(getEdgeColour());
         g.draw(s);
     }
 
