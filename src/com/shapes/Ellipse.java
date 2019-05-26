@@ -4,6 +4,12 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.text.DecimalFormat;
 
+/**
+ * The {@code Ellipse} extends the abstract shape class {@code McShape} to give more customisation and control over the object.
+ * The class encapsulates the idea of an ellipse object which is bounded by a framing rectangle in double precision.
+ *
+ * The class uses {@code Ellipse2D.Double} to paint the object to the screen
+ */
 public class Ellipse extends McShape
 {
     //VARIABLES
@@ -13,7 +19,20 @@ public class Ellipse extends McShape
     private double _y1;
     private double _x2;
     private double _y2;
+
+
     //CONSTRUCTOR
+
+    /**
+     * Constructs and initialises an Ellipse with the specified coordinates, colours, and screen dimensions.
+     * @param x1 The X coordinate of the first corner of the framing rectangle
+     * @param y1 The Y coordinate of the first corner of the framing rectangle
+     * @param x2 The X coordinate of the opposite corner of the framing rectangle
+     * @param y2 The Y coordinate of the opposite corner of the framing rectangle
+     * @param edge The edge colour of the {@code Ellipse}
+     * @param fill The fill colour, if any, of the {@code Ellipse}
+     * @param canvasSize The current size of the canvas
+     */
     public Ellipse(double x1, double y1, double x2, double y2, Color edge, Color fill, int canvasSize){
 
         this._edgeColour = edge;
@@ -24,6 +43,13 @@ public class Ellipse extends McShape
         this._y2 = convertToVector(y2, canvasSize);
     }
     //CONSTRUCTOR used when loading data from a file
+
+    /**
+     * Constructs and initialises an Ellipse from a saved file with the specified values and colours.
+     * @param values A string of two XY coordinates describing the framing rectangle
+     * @param edgecolour The edge colour of the {@code Ellipse}
+     * @param fillcolour The fill colour, if any, of the {@code Ellipse}
+     */
     public Ellipse(String values, Color edgecolour, Color fillcolour)
     {
         this._edgeColour = edgecolour;
@@ -38,25 +64,53 @@ public class Ellipse extends McShape
 
     //SETTERS AND GETTERS
 
+    /**
+     * Gets the X position of the first corner of the framing rectangle
+     * @return X position of the framing rectangle first corner in vector format (percentage of screen width)
+     */
     public double getStartX() {
         return _x1;
     }
+
+    /**
+     * Gets the Y position of the first corner of the framing rectangle
+     * @return Y position of the framing rectangle first corner in vector format (percentage of screen width)
+     */
     public double getStartY() {
         return _y1;
     }
+
+    /**
+     * Gets the X position of the second corner of the framing rectangle
+     * @return X position of the framing rectangle second corner in vector format (percentage of screen width)
+     */
     public double getEndX() {
         return _x2;
     }
+
+    /**
+     * Gets the Y position of the second corner of the framing rectangle
+     * @return Y position of the framing rectangle second corner in vector format (percentage of screen width)
+     */
     public double getEndY() {
         return _y2;
     }
 
+
+    /**
+     * Gets the current edge colour of the {@code Ellipse}
+     * @return an {@code java.awt.Color} object for the shapes edge
+     */
     @Override
     public Color getEdgeColour()
     {
         return this._edgeColour;
     }
 
+    /**
+     * Gets the current fill colour of the {@code Ellipse}
+     * @return an {@code java.awt.Color} object for the shapes fill, null if no fill set
+     */
     @Override
     public Color getFillColour()
     {
@@ -65,23 +119,46 @@ public class Ellipse extends McShape
 
 
     //METHODS
+
+    /**
+     * Converts the given number (screen coordinate) to a decimal percentage based on the current canvas size
+     * @param num a coordinate on the canvas
+     * @param canvasSize the current size of the canvas
+     * @return a vectorised coordinate
+     */
     private double convertToVector(double num, int canvasSize){
         return num / canvasSize;
     }
-    private Ellipse2D.Double createEllipse(double x1, double y1, double x2, double y2){
 
-        //Gets the top lefthand corner by finding the closest value to zero
+    /**
+     * Constructs and initialises an {@code Ellipse2D.Double} based on the encapsulated {@code Ellipse} framing rectangle values
+     * @param x1 The X coordinate of the first corner of the framing rectangle in vector format
+     * @param y1 The Y coordinate of the first corner of the framing rectangle in vector format
+     * @param x2 The X coordinate of the opposite corner of the framing rectangle in vector format
+     * @param y2 The Y coordinate of the opposite corner of the framing rectangle in vector format
+     * @return a new {@code Ellipse2D.Double}
+     */
+    private Ellipse2D.Double createEllipse(double x1, double y1, double x2, double y2)
+    {
+        // Gets the top left hand corner by finding the closest value to zero
         Double x = Math.min(x1, x2);
         Double y = Math.min(y1, y2);
 
-        //Determines the width and height of the Ellipse
+        // Determines the width and height of the Ellipse
         Double width = Math.abs(x1 - x2);
         Double height = Math.abs(y1 - y2);
 
         return new Ellipse2D.Double(x, y, width, height);
     }
+
+    /**
+     * Draws the custom shapes edge and fill using the settings of the current {@code Graphics2D} object
+     * @param g the current {@code Graphics2D} context
+     * @param currentCanvasSize the canvas size is used to calculate shape size
+     */
     @Override
-    public void draw(Graphics2D g, int currentCanvasSize){
+    public void draw(Graphics2D g, int currentCanvasSize)
+    {
         int ccs = currentCanvasSize;
         Shape s = createEllipse(this._x1*ccs, this._y1*ccs,this._x2*ccs, this._y2*ccs);
 
@@ -94,6 +171,10 @@ public class Ellipse extends McShape
         g.draw(s);
     }
 
+    /**
+     * Constructs a string representing the object and its encapsulated values
+     * @return a string representing the object
+     */
     @Override
     public String commandExport()
     {

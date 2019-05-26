@@ -16,7 +16,7 @@ import javax.swing.*;
 import static com.gui.McDrawApp.*;
 
 /**
- * The canvas which users can draw shapes on
+ * The McCanvas component is a blank square area of the screen onto which the user can draw shapes.
  */
 public class McCanvas extends JComponent
 {
