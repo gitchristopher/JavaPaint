@@ -27,6 +27,17 @@ public abstract class McShape {
     public abstract Color getFillColour();
 
     /**
+     * Converts the given number (screen coordinate) to a decimal percentage based on the current canvas size
+     * @param num a coordinate on the canvas
+     * @param canvasSize the current size of the canvas
+     * @return a vectorised coordinate
+     */
+    public double convertToVector(double num, int canvasSize)
+    {
+        return num / canvasSize;
+    }
+
+    /**
      * Draws the given shape to the screen
      * @param g
      * @param currentCanvasSize the canvas size is used to calculate shape size

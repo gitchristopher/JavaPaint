@@ -4,17 +4,31 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.text.DecimalFormat;
 
+/**
+ * The {@code Line} extends the abstract shape class {@code McShape} to give more customisation and control over the object.
+ * The class encapsulates the idea of a Line object which has a start and end point.
+ *
+ * The class uses {@code Line2D.Double} to paint the object to the screen
+ */
 public class Line extends McShape
 {
     //VARIABLES
     private Color _edgeColour;
     private Color _fillColour;
-
     private Plot _startPoint;
     private Plot _endPoint;
 
     //CONSTRUCTOR
 
+    /**
+     * Constructs and initialises a Line with the specified coordinates, edge colour, and screen dimensions.
+     * @param x1 The X coordinate of the first point of the Line
+     * @param y1 The Y coordinate of the first point of the Line
+     * @param x2 The X coordinate of the second point of the Line
+     * @param y2 The Y coordinate of the second point of the Line
+     * @param colour The edge colour of the {@code Line}
+     * @param canvasSize The current size of the canvas
+     */
     public Line(double x1, double y1, double x2, double y2, Color colour, int canvasSize)
     {
         this._edgeColour = colour;
@@ -23,10 +37,17 @@ public class Line extends McShape
     }
 
     //CONSTRUCTOR used when loading data from a file
+
+    //TODO: Remove fill colour from a LINE and the PLOT classes(load file ramifications)
+    /**
+     * Constructs and initialises a Line from a saved file with the specified values and colour.
+     * @param values A string of two XY coordinates describing the beginning and end of the Line
+     * @param edgecolour The edge colour of the {@code Line}
+     * @param fillcolour The fill colour of the {@code Line}
+     */
     public Line(String values, Color edgecolour, Color fillcolour)
     {
         this._edgeColour = edgecolour;
-
         String[] parts = values.split(" ");
         String sp = parts[0] + " " + parts[1];
         String ep = parts[2] + " " + parts[3];
@@ -36,10 +57,18 @@ public class Line extends McShape
 
     //SETTERS AND GETTERS
 
+    /**
+     * Gets the start location of the Line
+     * @return a {@code Plot} object representing the XY start location of the Line
+     */
     public Plot getStartPlot() {
         return _startPoint;
     }
 
+    /**
+     * Gets the end location of the Line
+     * @return a {@code Plot} object representing the XY end location of the Line
+     */
     public Plot getEndPlot() {
         return _endPoint;
     }
@@ -47,28 +76,44 @@ public class Line extends McShape
 
     //METHODS
 
+    /**
+     * Constructs and initialises an {@code Line2D.Double} based on the encapsulated {@code Line} start and end values
+     * @param x1 The X coordinate of the start point of the Line in vector format
+     * @param y1 The Y coordinate of the start point of the Line in vector format
+     * @param x2 The X coordinate of the end point of the Line in vector format
+     * @param y2 The Y coordinate of the end point of the Line in vector format
+     * @return a new {@code Line2D.Double}
+     */
     private Line2D.Double createShape(double x1, double y1, double x2, double y2){
 
         return new Line2D.Double(x1, y1, x2, y2);
     }
 
-    private double convertToVector(double num, int canvasSize)
-    {
-        return num / canvasSize;
-    }
-
+    /**
+     *
+     * @return
+     */
     @Override
     public Color getEdgeColour()
     {
         return this._edgeColour;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Color getFillColour()
     {
         return this._fillColour;
     }
 
+    /**
+     *
+     * @param g
+     * @param currentCanvasSize the canvas size is used to calculate shape size
+     */
     @Override
     public void draw(Graphics2D g, int currentCanvasSize) {
         int ccs = currentCanvasSize;
@@ -77,6 +122,10 @@ public class Line extends McShape
         g.draw(s);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String commandExport()
     {

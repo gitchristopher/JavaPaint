@@ -67,9 +67,6 @@ public class Rectangle extends McShape
     }
 
     //METHODS
-    private double convertToVector(double num, int canvasSize){
-        return num / canvasSize;
-    }
 
     private Rectangle2D.Double createRectangle(double x1, double y1, double x2, double y2){
 

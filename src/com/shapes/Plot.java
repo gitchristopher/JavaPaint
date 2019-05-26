@@ -21,7 +21,7 @@ public class Plot extends McShape
         this._x = convertToVector(x,canvasSize);
         this._y = convertToVector(y,canvasSize);
     }
-
+    //TODO: Remove fill colour from a LINE and the PLOT classes(load file ramifications)
     //Constructor used when loading data from a file
     public Plot(String values, Color edgecolour, Color fillcolour)
     {
@@ -47,12 +47,6 @@ public class Plot extends McShape
     //}
 
     //METHODS
-
-    //Converts a given number to the vector equivalent.
-    private double convertToVector(double num, int canvasSize)
-    {
-        return num / canvasSize;
-    }
 
     private Line2D.Double createShape(double x, double y)
     {

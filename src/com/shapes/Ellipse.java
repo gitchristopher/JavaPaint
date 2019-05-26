@@ -121,16 +121,6 @@ public class Ellipse extends McShape
     //METHODS
 
     /**
-     * Converts the given number (screen coordinate) to a decimal percentage based on the current canvas size
-     * @param num a coordinate on the canvas
-     * @param canvasSize the current size of the canvas
-     * @return a vectorised coordinate
-     */
-    private double convertToVector(double num, int canvasSize){
-        return num / canvasSize;
-    }
-
-    /**
      * Constructs and initialises an {@code Ellipse2D.Double} based on the encapsulated {@code Ellipse} framing rectangle values
      * @param x1 The X coordinate of the first corner of the framing rectangle in vector format
      * @param y1 The Y coordinate of the first corner of the framing rectangle in vector format

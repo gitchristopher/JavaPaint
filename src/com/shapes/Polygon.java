@@ -90,11 +90,6 @@ public class Polygon extends McShape
         //}
     }
 
-    private double convertToVector(double PolyNum, int canvasSize)
-    {
-        return PolyNum / canvasSize;
-    }
-
     private double[] convertArrayToVector(double[] PolyArray, int canvasSize)
     {
         double[] temp = new double[]{};
