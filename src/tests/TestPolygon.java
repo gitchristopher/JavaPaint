@@ -7,20 +7,12 @@ import org.junit.jupiter.api.*;
 import shapes.Polygon;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class TestPolygon
 {
     //Set up helpers
-    double[] _xPoly;// = new double[]{};
-    double[] _yPoly;// = new double[]{};
     Color _edgeColour;
     Color _fillColour;
-    public ArrayList<Double> _xList = new ArrayList<Double>();
-    public ArrayList<Double> _yList = new ArrayList<Double>();
-    Boolean _isClosed = false;
-
-
 
     //Declare Object
     Polygon polygon;

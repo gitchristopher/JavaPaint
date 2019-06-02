@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.File;
@@ -24,13 +23,7 @@ import java.util.List;
 public class TestVecFile
 {
     //Set up helpers
-    public int _width, _height;
-    double x1;
-    double y1;
-    double x2;
-    double y2;
     Color edgeColour = Color.BLACK;
-    Color fillColour = Color.WHITE;
     int canvasSize = 10;
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
 

@@ -15,10 +15,6 @@ public class TestRectangle
     double y1;
     double x2;
     double y2;
-    Color edgeColour = Color.BLACK;
-    Color fillColour = Color.WHITE;
-    int canvasSize = 1;
-
 
     private Rectangle2D.Double createRectangle(double x1, double y1, double x2, double y2){
 

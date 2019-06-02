@@ -12,20 +12,14 @@ import java.util.ArrayList;
 public class TestMcCanvas
 {
     //Set up helpers
-    public int _width, _height;
-    double x1;
-    double y1;
-    double x2;
-    double y2;
+    public int _height;
+
     Color edgeColour = Color.BLACK;
-    Color fillColour = Color.WHITE;
-    int canvasSize = 1;
     public ArrayList<McShape> listOfMcShapes = new ArrayList<McShape>();
 
     private int getCanvasSize(){
         return this._height;
     }
-
 
     //Declare Object
     McCanvas mcCanvas;

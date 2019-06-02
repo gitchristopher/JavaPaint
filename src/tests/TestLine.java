@@ -18,8 +18,6 @@ public class TestLine
     double y2 = 0;
     private Plot _startPoint;
     private Plot _endPoint;
-
-    Color colour = Color.BLACK;
     int canvasSize = 1;
 
     private Line2D.Double createShape(double x1, double y1, double x2, double y2){
