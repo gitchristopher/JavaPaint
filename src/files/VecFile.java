@@ -115,10 +115,6 @@ public class VecFile
 
             System.exit(0);
         }catch (Exception e) {
-            /* This is a generic Exception handler which means it can handle
-             * all the exceptions. This will execute if the exception is not
-             * handled by previous catch blocks.
-             */
             System.out.println("Exception occurred");
             JOptionPane.showMessageDialog(null, "Your VEC file failed to save. Please try again.", "Try again", JOptionPane.ERROR_MESSAGE);
         }
@@ -282,7 +278,7 @@ public class VecFile
                         importListOfMcShapes.add((McShape)newPolygon);
                         break;
                     default:
-                        // code block
+                        throw new Exception("The vec file contains commands this version does not support");
                 }
 
                 // Get the next line of the saved document
@@ -300,12 +296,8 @@ public class VecFile
             JOptionPane.showMessageDialog(null, "VEC file failed to load", "Null error occurred", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }catch (Exception e) {
-            /* This is a generic Exception handler which means it can handle
-             * all the exceptions. This will execute if the exception is not
-             * handled by previous catch blocks.
-             */
             System.out.println("Exception occurred");
-            JOptionPane.showMessageDialog(null, "VEC file failed to load", "Corrupt file", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Corrupt file", JOptionPane.ERROR_MESSAGE);
         }finally
         {
             br.close();
